@@ -3,6 +3,9 @@ on: # when the action should run. Can also be a CRON or in response to external 
   schedule:
     - cron: '30 5 1 * *'
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   ngxUptodate:
     runs-on: ubuntu-latest
