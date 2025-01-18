@@ -28,6 +28,6 @@ jobs:
 
       - name: Deploy to Github pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm run ng -- deploy --repo="https://github.com/nini1988/ForestDetector.git" --base-href=/ForestDetector/
