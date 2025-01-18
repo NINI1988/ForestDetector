@@ -1,0 +1,9 @@
+.table {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+button {
+  margin-right: 1rem;
+}
