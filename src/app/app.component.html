@@ -23,15 +23,34 @@
         <td>
           <button
             class="btn btn-primary"
-            (click)="fileInput.click()"
+            (click)="fileInputCamera.click()"
           >
-            Take/Upload Image
+          <i class="bi bi-camera"></i>
+            <!-- Take/Upload Image -->
           </button>
 
           <!-- Hidden file input -->
           <input
             type="file"
-            #fileInput
+            #fileInputCamera
+            accept="image/*"
+            capture="environment"
+            style="display: none;"
+            (change)="onFileSelected(i, $event)"
+          />
+
+          <button
+            class="btn btn-primary"
+            (click)="fileInputImage.click()"
+          >
+            <i class="bi bi-image"></i>
+            <!-- Take/Upload Image -->
+          </button>
+
+          <!-- Hidden file input -->
+          <input
+            type="file"
+            #fileInputImage
             accept="image/*"
             style="display: none;"
             (change)="onFileSelected(i, $event)"
