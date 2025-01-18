@@ -1,9 +1,11 @@
 # ForestDetector
-Calculate a score from the Forest Shuffle (german Mischwald) board game with computer vision
+Calculate a score from the Forest Shuffle (german Mischwald) board game with computer vision.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.2.
+See https://nini1988.github.io/ForestDetector/
 
 ## Development server
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.2.
 
 To start a local development server, run:
 

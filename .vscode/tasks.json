@@ -37,6 +37,17 @@
           }
         }
       }
+    },
+    {
+      "label": "Deploy to Github Pages",
+      "type": "shell",
+      "command": "ng",
+      "args": [
+        "deploy",
+        "--repo=https://github.com/nini1988/ForestDetector.git",
+        "--base-href=//ForestDetector\\"
+      ],
+      "problemMatcher": []
     }
   ]
 }
