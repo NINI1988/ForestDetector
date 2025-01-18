@@ -7,27 +7,24 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   # Build job
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
+    - name: Install and Build 🔧
+      run: |
+        npm install
+        npm run deploy
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to Github pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm run ng -- deploy --repo="https://github.com/nini1988/ForestDetector.git" --base-href=/ForestDetector/
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        FOLDER: dist/forest-detector/browser
