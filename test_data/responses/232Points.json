@@ -1,0 +1,340 @@
+{
+  "inference_id": "06a51c3a-fffd-4545-a7ba-8679c6984231",
+  "time": 0.1166266430000178,
+  "image": {
+    "width": 1597,
+    "height": 1512
+  },
+  "predictions": [
+    {
+      "x": 264.0,
+      "y": 898.0,
+      "width": 96.0,
+      "height": 252.0,
+      "confidence": 0.9750143885612488,
+      "class": "Braunbaer_Right_Green",
+      "class_id": 37,
+      "detection_id": "bc705a31-ca5c-4440-96c3-d2d8798d4ab2"
+    },
+    {
+      "x": 1354.5,
+      "y": 522.0,
+      "width": 163.0,
+      "height": 124.0,
+      "confidence": 0.9712342619895935,
+      "class": "Igel_Green",
+      "class_id": 149,
+      "detection_id": "a2c73845-eb99-4291-9a2a-ca0aee220e77"
+    },
+    {
+      "x": 783.5,
+      "y": 464.0,
+      "width": 159.0,
+      "height": 118.0,
+      "confidence": 0.9671041965484619,
+      "class": "Parasol_Orange",
+      "class_id": 179,
+      "detection_id": "d2f4bb86-1ebd-4c36-8496-ce91e11588c8"
+    },
+    {
+      "x": 169.5,
+      "y": 627.0,
+      "width": 171.0,
+      "height": 240.0,
+      "confidence": 0.9667242765426636,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "48e8691f-cbd2-49ca-bc37-88f0e173fbff"
+    },
+    {
+      "x": 460.0,
+      "y": 503.0,
+      "width": 170.0,
+      "height": 234.0,
+      "confidence": 0.9615594744682312,
+      "class": "Birke",
+      "class_id": 35,
+      "detection_id": "699f0621-639b-4f90-8680-a540a52010ab"
+    },
+    {
+      "x": 968.5,
+      "y": 738.0,
+      "width": 175.0,
+      "height": 250.0,
+      "confidence": 0.960779070854187,
+      "class": "Linde",
+      "class_id": 162,
+      "detection_id": "7ba42f4c-832e-4219-8525-deeba5dadcff"
+    },
+    {
+      "x": 848.5,
+      "y": 739.0,
+      "width": 93.0,
+      "height": 240.0,
+      "confidence": 0.9596847295761108,
+      "class": "Waschbaer_Left_Blue",
+      "class_id": 246,
+      "detection_id": "49d568a6-7bbe-4b7f-a0de-3434a1a63dbb"
+    },
+    {
+      "x": 417.0,
+      "y": 888.5,
+      "width": 92.0,
+      "height": 251.0,
+      "confidence": 0.9595622420310974,
+      "class": "Steinmarder_Left_Green",
+      "class_id": 221,
+      "detection_id": "bd985140-7fc1-4a1f-8ba0-e273bba745cd"
+    },
+    {
+      "x": 1389.0,
+      "y": 1131.5,
+      "width": 170.0,
+      "height": 135.0,
+      "confidence": 0.9584606289863586,
+      "class": "Igel_Orange",
+      "class_id": 150,
+      "detection_id": "168da8be-7f86-48b6-a227-eaf420ab91d2"
+    },
+    {
+      "x": 1234.0,
+      "y": 339.0,
+      "width": 92.0,
+      "height": 232.0,
+      "confidence": 0.958123505115509,
+      "class": "Feldhase_Left_Green",
+      "class_id": 84,
+      "detection_id": "98b20a27-4cdf-49a0-96bd-db260005de00"
+    },
+    {
+      "x": 143.5,
+      "y": 902.0,
+      "width": 177.0,
+      "height": 252.0,
+      "confidence": 0.9568847417831421,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "229f5765-444a-4d37-8863-11f32fd5a832"
+    },
+    {
+      "x": 793.0,
+      "y": 291.5,
+      "width": 172.0,
+      "height": 233.0,
+      "confidence": 0.9559241533279419,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "37d20b57-1c64-413e-83ff-260eff310fe5"
+    },
+    {
+      "x": 1350.5,
+      "y": 342.5,
+      "width": 173.0,
+      "height": 237.0,
+      "confidence": 0.9557251930236816,
+      "class": "Linde",
+      "class_id": 162,
+      "detection_id": "b800402f-b8a5-43de-ba8d-2bbd12f63e96"
+    },
+    {
+      "x": 659.0,
+      "y": 897.5,
+      "width": 106.0,
+      "height": 249.0,
+      "confidence": 0.9555116295814514,
+      "class": "Feldhase_Right_LightGreen",
+      "class_id": 88,
+      "detection_id": "35cf291b-befc-4788-a653-7e364be86ccf"
+    },
+    {
+      "x": 677.5,
+      "y": 275.5,
+      "width": 87.0,
+      "height": 221.0,
+      "confidence": 0.9552976489067078,
+      "class": "Feldhase_Left_Yellow",
+      "class_id": 86,
+      "detection_id": "73b96b1f-17c8-4675-9c4b-5ae78fe06edc"
+    },
+    {
+      "x": 960.5,
+      "y": 554.5,
+      "width": 159.0,
+      "height": 119.0,
+      "confidence": 0.9550514817237854,
+      "class": "Schillerfalter_Yellow",
+      "class_id": 195,
+      "detection_id": "f526ef18-7bd5-4ea2-add6-022b4a2df165"
+    },
+    {
+      "x": 534.0,
+      "y": 896.5,
+      "width": 178.0,
+      "height": 253.0,
+      "confidence": 0.9527578353881836,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "1cb97d92-5d18-4c9f-9f0f-cce7cc7dcb44"
+    },
+    {
+      "x": 459.5,
+      "y": 328.5,
+      "width": 157.0,
+      "height": 115.0,
+      "confidence": 0.9521313905715942,
+      "class": "Kaisermantel_Brown",
+      "class_id": 151,
+      "detection_id": "3b9066ab-a177-4604-b5ae-7b7c560eeed4"
+    },
+    {
+      "x": 1385.5,
+      "y": 703.5,
+      "width": 167.0,
+      "height": 123.0,
+      "confidence": 0.9519104957580566,
+      "class": "Waldkauz_Green",
+      "class_id": 243,
+      "detection_id": "56439328-ce90-4956-85ce-ec8911c27bcd"
+    },
+    {
+      "x": 1087.0,
+      "y": 735.5,
+      "width": 96.0,
+      "height": 243.0,
+      "confidence": 0.9517452120780945,
+      "class": "Feldhase_Right_Red",
+      "class_id": 89,
+      "detection_id": "94daf78f-94d3-4d22-8434-3d2234449ea7"
+    },
+    {
+      "x": 1262.5,
+      "y": 865.5,
+      "width": 89.0,
+      "height": 249.0,
+      "confidence": 0.9492800831794739,
+      "class": "Feldhase_Left_LightGreen",
+      "class_id": 85,
+      "detection_id": "6b3e9eb3-df2b-4150-bb57-152c9cd5a02a"
+    },
+    {
+      "x": 789.0,
+      "y": 120.0,
+      "width": 154.0,
+      "height": 114.0,
+      "confidence": 0.9491347670555115,
+      "class": "Tagpfauenauge_Orange",
+      "class_id": 230,
+      "detection_id": "22e89209-ba21-42f5-a0bb-47807c20d0f2"
+    },
+    {
+      "x": 910.0,
+      "y": 283.0,
+      "width": 98.0,
+      "height": 228.0,
+      "confidence": 0.9467265009880066,
+      "class": "Steinmarder_Right_Orange",
+      "class_id": 224,
+      "detection_id": "1935fd56-3aa6-4092-a0ad-76641094b982"
+    },
+    {
+      "x": 1378.5,
+      "y": 890.5,
+      "width": 177.0,
+      "height": 265.0,
+      "confidence": 0.9412581324577332,
+      "class": "Birke",
+      "class_id": 35,
+      "detection_id": "55093f3a-229a-47c6-a001-90cd72d4fe4d"
+    },
+    {
+      "x": 1469.5,
+      "y": 345.0,
+      "width": 99.0,
+      "height": 226.0,
+      "confidence": 0.9411386847496033,
+      "class": "Feldhase_Right_Red",
+      "class_id": 89,
+      "detection_id": "5db9d469-1015-45fe-8747-a6fd4d7845d8"
+    },
+    {
+      "x": 1525.0,
+      "y": 934.0,
+      "width": 112.0,
+      "height": 254.0,
+      "confidence": 0.9406889081001282,
+      "class": "Fuchs_Right_Brown",
+      "class_id": 109,
+      "detection_id": "ee7457df-325a-4c69-bced-7e78ec438eae"
+    },
+    {
+      "x": 1190.5,
+      "y": 858.5,
+      "width": 95.0,
+      "height": 247.0,
+      "confidence": 0.9351281523704529,
+      "class": "Feldhase_Left_Brown",
+      "class_id": 83,
+      "detection_id": "daddf290-3f3e-4aeb-b322-68349fb6e7f5"
+    },
+    {
+      "x": 1353.5,
+      "y": 172.5,
+      "width": 159.0,
+      "height": 113.0,
+      "confidence": 0.9331267476081848,
+      "class": "Trauermantel_Red",
+      "class_id": 235,
+      "detection_id": "5aa3c4b1-23eb-46d3-8daa-b3f17623431c"
+    },
+    {
+      "x": 956.0,
+      "y": 1043.0,
+      "width": 166.0,
+      "height": 128.0,
+      "confidence": 0.9308192133903503,
+      "class": "Erdkroete_Grey",
+      "class_id": 78,
+      "detection_id": "d86e0168-8399-4632-b2b5-1feca67d3bd2"
+    },
+    {
+      "x": 962.0,
+      "y": 921.0,
+      "width": 166.0,
+      "height": 122.0,
+      "confidence": 0.9304384589195251,
+      "class": "Erdkroete_Red",
+      "class_id": 80,
+      "detection_id": "a329a83e-7133-474a-be93-feaf54f4c9e5"
+    },
+    {
+      "x": 344.0,
+      "y": 485.0,
+      "width": 90.0,
+      "height": 232.0,
+      "confidence": 0.9251934289932251,
+      "class": "Steinmarder_Left_Red",
+      "class_id": 222,
+      "detection_id": "1038feb3-2d76-4105-a3ed-927ba8b95414"
+    },
+    {
+      "x": 576.0,
+      "y": 488.0,
+      "width": 98.0,
+      "height": 234.0,
+      "confidence": 0.8838101625442505,
+      "class": "Feldhase_Right_Blue",
+      "class_id": 87,
+      "detection_id": "975237d2-087d-45da-8f60-c2f71e5b2718"
+    },
+    {
+      "x": 451.5,
+      "y": 682.0,
+      "width": 163.0,
+      "height": 122.0,
+      "confidence": 0.8812643885612488,
+      "class": "Waldameise_Green",
+      "class_id": 236,
+      "detection_id": "418664fb-deab-45a8-a031-280619f65be8"
+    }
+  ]
+}

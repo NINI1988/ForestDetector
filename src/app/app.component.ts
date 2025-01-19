@@ -1,6 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ImageAnnotatorService } from './image-annotator.service';
+import { lastValueFrom } from 'rxjs';
+import { RoboflowResult } from './roboflow-response';
+
+interface Row {
+  name: string;
+  boardGame: string | null; // image base64 string
+  annotations: RoboflowResult | null;
+  cardsInCave: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,16 +19,17 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ForestDetector';
 
-  // Our default 5 rows
-  rows = [
-    { name: '', boardGame: null, cardsInCave: 0 },
-    { name: '', boardGame: null, cardsInCave: 0 },
-    { name: '', boardGame: null, cardsInCave: 0 },
-    { name: '', boardGame: null, cardsInCave: 0 },
-    { name: '', boardGame: null, cardsInCave: 0 },
-  ];
+  constructor(private imageAnnotator: ImageAnnotatorService) { }
+
+    rows: Row[] = [
+      { name: '', boardGame: null, annotations: null, cardsInCave: 0 },
+      { name: '', boardGame: null, annotations: null, cardsInCave: 0 },
+      { name: '', boardGame: null, annotations: null, cardsInCave: 0 },
+      { name: '', boardGame: null, annotations: null, cardsInCave: 0 },
+      { name: '', boardGame: null, annotations: null, cardsInCave: 0 }
+    ]
+
 
   /**
    * Called when user picks or takes a photo.
@@ -39,11 +50,23 @@ export class AppComponent {
   /**
    * Called when Submit button is clicked
    */
-  submit() {
-    // Here you can handle the final data.
+  async submit() {
+
     console.log('Submitted data:', this.rows);
 
-    // You can call an API, pass it somewhere else, etc.
-    // yourCustomFunction(this.rows);
+    const annotationPromises = this.rows
+      .filter(row => row.boardGame)
+      .map(row => lastValueFrom(this.imageAnnotator.annotate(row.boardGame!)));
+
+    try {
+      const results = await Promise.all(annotationPromises);
+      results.forEach((result, index) => {
+        this.rows[index].annotations = result;
+      });
+      console.log('Annotation results:', results);
+    } catch (error) {
+      console.error('Error annotating images:', error);
+    }
+
   }
 }
