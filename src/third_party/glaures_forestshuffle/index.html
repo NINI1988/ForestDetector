@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./iconx/favicon.ico">
+    <link rel="apple-touch-icon" href="./iconx/apple-touch-icon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let langSetting = (navigator.language || navigator.userLanguage).split('-')[0];
+        const lang = ['de', 'en', 'fr', 'es', 'it', 'pl', 'ru', 'cn', 'bg'].indexOf(langSetting) >= 0 ? langSetting : 'en'
+        function loadManifest() {
+            const link = document.createElement('link');
+            link.rel = 'manifest';
+            link.href = `./manifest-${lang}.json`;
+            document.head.appendChild(link);
+        }
+        loadManifest();
+
+        let touchStartY = 0;
+        let preventPullToRefresh = false;
+
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length !== 1) return;
+            touchStartY = event.touches[0].clientY;
+            preventPullToRefresh = window.scrollY === 0;
+        }, {passive: false});
+
+        document.addEventListener('touchmove', function (event) {
+            const touchCurrentY = event.touches[0].clientY;
+            const touchDeltaY = touchCurrentY - touchStartY;
+
+            if (preventPullToRefresh && touchDeltaY > 0) {
+                event.preventDefault();
+            }
+        }, {passive: false});
+
+        // prevent dbclick zooming
+        document.addEventListener('dblclick', function(event) {
+            event.preventDefault();
+        });
+    </script>
+</head>
+<body>
+<div id="app"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
