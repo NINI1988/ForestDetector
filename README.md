@@ -60,3 +60,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# Third party modules
+- This project uses https://github.com/glaures/forestshuffle for score calculation, translations and symbols.
+  - The project is licensed under Apache License, Version 2.0. The original license can be found in `src/third_party/glaures_forestshuffle/LICENSE.txt`.

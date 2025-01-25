@@ -1,4 +1,4 @@
-export interface RoboflowResult {
+export interface PredictionResult {
   inference_id: string;
   time:         number;
   image:        Image;
@@ -16,7 +16,7 @@ export interface Prediction {
   width:        number;
   height:       number;
   confidence:   number;
-  class:        string;
+  class:        string; // label
   class_id:     number;
   detection_id: string;
 }

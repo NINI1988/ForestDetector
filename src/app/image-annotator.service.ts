@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RoboflowResult } from './roboflow-response';
+import { PredictionResult } from '../model/prediction-result';
 import { environment } from './../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ImageAnnotatorService {
+export class ImageAnnotatorService
+{
 
   constructor(
     private http: HttpClient
   ) { }
 
-  private getApiKey(): string | null {
+  private getApiKey(): string | null
+  {
     const hash = window.location.hash.substring(1); // Remove the '#' character
     const params = new URLSearchParams(hash);
     return params.get('api_key');
@@ -24,16 +26,20 @@ export class ImageAnnotatorService {
    *
    * @param image base64 image string
    */
-  public annotate(image: string): Observable<RoboflowResult> {
+  public annotate(image: string): Observable<PredictionResult>
+  {
 
     let api_key = this.getApiKey()
-    if (!api_key) {
+    if (!api_key)
+    {
       api_key = environment.api_key;
-      if (!api_key) {
+      if (!api_key)
+      {
 
         const error = "Please specify api_key in url. https://nini1988.github.io/ForestDetector#api_key=XXX";
         console.error(error)
-        return new Observable<RoboflowResult>(observer => {
+        return new Observable<PredictionResult>(observer =>
+        {
           observer.error(error);
         });
       }
@@ -45,7 +51,7 @@ export class ImageAnnotatorService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post<RoboflowResult>(url, image, { headers, params })
+    return this.http.post<PredictionResult>(url, image, { headers, params })
 
   }
 

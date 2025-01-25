@@ -1,0 +1,40 @@
+// custom.scss
+// Importieren Sie die Bootstrap-Variablen
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Definieren Sie hier Ihre individuellen Variablen
+$theme-colors: (
+        "primary": #274e37, // Beispiel für eine angepasste Primärfarbe
+        "secondary": #CBB3BF,
+        "success": #9eb9a6,
+        "info": #547AA5,
+        "warning": #EC9A29,
+        "danger": #A8201A,
+        "light": white,
+        "dark": #04151F
+);
+
+$primary: #274e37;
+$list-group-active-bg: #274e37;
+$list-group-active-border-color: #274e37;
+
+$body-bg: #E8ECDC;
+
+/* Entfernt die Spinners in Webkit-basierten Browsern (Chrome, Safari, etc.) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Entfernt die Spinners in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// Importieren Sie die restlichen Bootstrap-Komponenten
+@import "bootstrap/scss/bootstrap";
+
+@import "flag-icon-css/css/flag-icons.min.css";

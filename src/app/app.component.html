@@ -8,13 +8,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows; let i = index">
+      <tr *ngFor="let player of players; let i = index">
         <!-- Name -->
         <td>
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="row.name"
+            [(ngModel)]="player.name"
             [placeholder]="'Player' + (i + 1)"
           />
         </td>
@@ -57,9 +57,9 @@
           />
 
           <!-- Preview if image is selected -->
-          <div *ngIf="row.boardGame" style="margin-top: 10px;">
+          <div *ngIf="player.boardGame" style="margin-top: 10px;">
             <img
-              [src]="row.boardGame"
+              [src]="player.boardGame"
               alt="BoardGame"
               width="80"
               style="border: 1px solid #ccc; padding: 4px;"
@@ -72,7 +72,7 @@
           <input
             type="number"
             class="form-control"
-            [(ngModel)]="row.cardsInCave"
+            [(ngModel)]="player.cardsInCave"
             min="0"
           />
         </td>
