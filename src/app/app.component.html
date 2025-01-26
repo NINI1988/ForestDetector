@@ -83,7 +83,73 @@
 
 <!-- Submit Button -->
 <div class="d-flex justify-content-center mt-3">
-  <button class="btn btn-success" (click)="submit()">
-    Submit
+  <button class="btn btn-success" (click)="submit()" [disabled]="isLoading">
+    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span *ngIf="!isLoading">Submit</span>
+    <span *ngIf="isLoading" class="visually-hidden">Loading...</span>
   </button>
+</div>
+
+<!-- Table for player forest points -->
+<div class="mt-3" *ngIf="allForests.length > 0">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th *ngFor="let forest of allForests">
+          {{ forest.playerName }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tree Points</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.treePoints() }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Top Points</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.topPoints() }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Bottom Points</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.bottomPoints() }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Side Points</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.sidePoints() }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Cards in Cave</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.caveCount }}
+          </div>
+        </td>
+      </tr>
+      <tr style="border-top: 2px solid #000;">
+        <td>Total Points</td>
+        <td *ngFor="let forest of allForests">
+          <div *ngIf="forest">
+            {{ forest.points }}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

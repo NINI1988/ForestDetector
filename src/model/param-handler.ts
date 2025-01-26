@@ -100,7 +100,7 @@ export class ParamHandler
       if (cardInfo.speci == cardId)
       {
         const base = forest.getBase(forestCard.baseIndex)
-        const baseInfo = cards[forestCard.id]
+        const baseInfo = cards[base.id]
         if (baseIds.includes(baseInfo.speci))
         {
           count++;

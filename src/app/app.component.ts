@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ImageAnnotatorService } from './image-annotator.service';
 import { lastValueFrom } from 'rxjs';
 import { PredictionResult } from '../model/prediction-result';
+import { Forest } from '../model/forest';
+import { ForestAssembler } from '../model/forest-assembler';
 
 interface Player
 {
   name: string;
-  boardGame: string | null; // image base64 string
-  annotations: PredictionResult | null;
+  boardGame?: string; // image base64 string
+  annotations?: PredictionResult;
   cardsInCave: number;
 }
 
@@ -24,13 +26,17 @@ export class AppComponent
   PLAYER_COUNT = 5
   players: Player[] = [];
 
+  allForests: Forest[] = [];
+
+  isLoading = false;
+
   constructor(private imageAnnotator: ImageAnnotatorService) { }
 
   ngOnInit()
   {
     for (let i = 0; i < this.PLAYER_COUNT; i++)
     {
-      this.players.push({ name: '', boardGame: null, annotations: null, cardsInCave: 0 })
+      this.players.push({ name: ``, cardsInCave: 0 })
     }
   }
 
@@ -58,24 +64,54 @@ export class AppComponent
    */
   async submit()
   {
+    this.allForests.length = 0; // clear all forests
 
+    this.isLoading = true;
     console.log('Submitted data:', this.players);
 
-    const annotationPromises = this.players
-      .filter(player => player.boardGame)  // ignore player without board game image
-      .map(player => lastValueFrom(this.imageAnnotator.annotate(player.boardGame!)));
+    const annotationPromises = this.players.map(player =>
+      player.boardGame
+        ? lastValueFrom(this.imageAnnotator.annotate(player.boardGame))
+        : Promise.resolve(null)
+    );
 
     try
     {
-      const results = await Promise.all(annotationPromises);
-      results.forEach((result, index) =>
+      const predictionResults = await Promise.all(annotationPromises);
+
+      predictionResults.forEach((predictionResult, index) =>
       {
-        this.players[index].annotations = result;
+        if (predictionResult != null)
+        {
+          let player = this.players[index]
+
+          const playerName = player.name || `Player${index + 1}`
+
+          const forest = new Forest(playerName, this.allForests)
+          this.allForests.push(forest)
+
+          player.annotations = predictionResult;
+
+          const forestCards = ForestAssembler.assembleForest(predictionResult);
+
+          forest.setCards(forestCards)
+          forest.caveCount = player.cardsInCave
+        }
+
       });
-      console.log('Annotation results:', results);
+
+      for (const forest of this.allForests)
+      {
+        forest.updatePoints()
+      }
+
+      console.log('Annotation results:', predictionResults);
     } catch (error)
     {
       console.error('Error annotating images:', error);
+    } finally
+    {
+      this.isLoading = false;
     }
 
   }
