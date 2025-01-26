@@ -1,4 +1,4 @@
-export const enum CardPosition
+export enum CardPosition
 {
   BASE = "BASE", // Tree/Shrub
   TOP = "TOP",

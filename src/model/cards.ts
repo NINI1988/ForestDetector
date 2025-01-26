@@ -1,1342 +1,1610 @@
 import { Card } from "./card";
 import { CardColor } from "./card-color";
+import { CardId } from "./card-id";
 import { CardPosition } from "./card-position";
 
 export const cards: { [key: string]: Card } = {
-    "Baumsproessling": {
-        "speci": "SAMPLING",
-        "color": CardColor.NONE,
-        "position": CardPosition.BASE
-    },
-    "Linde": {
-        "speci": "LINDEN",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BASE
-    },
-    "Eiche": {
-        "speci": "OAK",
-        "color": CardColor.OAK,
-        "position": CardPosition.BASE
-    },
-    "Tanne": {
-        "speci": "SILVER_FIR",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BASE
-    },
-    "Birke": {
-        "speci": "BIRCH",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BASE,
-        // card_FS: cards.beech
-    },
-    "Buche": {
-        "speci": "BEECH",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BASE
-    },
-    "Ahorn": {
-        "speci": "SYCAMORE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BASE
-    },
-    "Douglasie": {
-        "speci": "DOUGLAS_FIR",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BASE
-    },
-    "Kastanie": {
-        "speci": "HORSE_CHESTNUT",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BASE
-    },
-    "Feldhase_Left_Yellow": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Dachs_Right_Grey": {
-        "speci": "EUROPEAN_BADGER",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Feldhase_Left_Brown": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.OAK,
-        "position": CardPosition.LEFT
-    },
-    "Hufeisennase_Right_Yellow": {
-        "speci": "GREATER_HORSESHOE_BAT",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.RIGHT
-    },
-    "Feldhase_Left_Blue": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Fuchs_Right_Brown": {
-        "speci": "RED_FOX",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Waschbaer_Left_Grey": {
-        "speci": "RACCOON",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Feldhase_Right_Red": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Wildschwein_Left_Red": {
-        "speci": "WILD_BOAR",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.LEFT
-    },
-    "Feldhase_Right_Blue": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Braunes-Langohr_Left_Red": {
-        "speci": "BROWN_LONG_EARED_BAT",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.LEFT
-    },
-    "Feldhase_Right_Yellow": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.RIGHT
-    },
-    "Waschbaer_Left_Blue": {
-        "speci": "RACCOON",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Reh_Right_Green": {
-        "speci": "ROE_DEER",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Mopsfledermaus_Left_Orange": {
-        "speci": "BARBASTELLE_BAT",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.LEFT
-    },
-    "Wildschwein_Right_Brown": {
-        "speci": "WILD_BOAR",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Braunbaer_Left_Yellow": {
-        "speci": "BROWN_BEAR",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Waschbaer_Right_Blue": {
-        "speci": "RACCOON",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Steinmarder_Left_Red": {
-        "speci": "BEECH_MARTEN",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.LEFT
-    },
-    "Braunbaer_Right_Orange": {
-        "speci": "BROWN_BEAR",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Rothirsch_Left_Yellow": {
-        "speci": "RED_DEER",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Braunbaer_Right_Green": {
-        "speci": "BROWN_BEAR",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Mopsfledermaus_Left_Blue": {
-        "speci": "BARBASTELLE_BAT",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Steinmarder_Right_Orange": {
-        "speci": "BEECH_MARTEN",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Luchs_Left_Grey": {
-        "speci": "LYNX",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Feldhase_Right_LightGreen": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Wildschwein_Left_LightGreen": {
-        "speci": "WILD_BOAR",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Steinmarder_Right_Brown": {
-        "speci": "BEECH_MARTEN",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Dachs_Left_Orange": {
-        "speci": "EUROPEAN_BADGER",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.LEFT
-    },
-    "Stechmuecke_Right_Brown": {
-        "speci": "GNAT",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Fuchs_Left_Yellow": {
-        "speci": "RED_FOX",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Holzbiene_Right_Grey": {
-        "speci": "VIOLET_CARPENTER_BEE",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Reh_Right_Orange": {
-        "speci": "ROE_DEER",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Damhirsch_Left_Yellow": {
-        "speci": "FALLOW_DEER",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Wildschwein_Right_Grey": {
-        "speci": "WILD_BOAR",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Reh_Right_LightGreen": {
-        "speci": "ROE_DEER",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Rothirsch_Left_Blue": {
-        "speci": "RED_DEER",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Damhirsch_Right_Red": {
-        "speci": "FALLOW_DEER",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Holzbiene_Left_Grey": {
-        "speci": "VIOLET_CARPENTER_BEE",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Luchs_Right_Green": {
-        "speci": "LYNX",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Siebenschlaefer_Left_Green": {
-        "speci": "EUROPEAN_FAT_DORMOUSE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Mopsfledermaus_Right_Brown": {
-        "speci": "BARBASTELLE_BAT",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Hufeisennase_Left_Green": {
-        "speci": "GREATER_HORSESHOE_BAT",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Siebenschlaefer_Right_Grey": {
-        "speci": "EUROPEAN_FAT_DORMOUSE",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Wolf_Right_Blue": {
-        "speci": "WOLF",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Siebenschlaefer_Left_Blue": {
-        "speci": "EUROPEAN_FAT_DORMOUSE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Braunes-Langohr_Right_Green": {
-        "speci": "BROWN_LONG_EARED_BAT",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Bechsteinfledermaus_Left_Green": {
-        "speci": "BECHSTEIN",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Siebenschlaefer_Right_Brown": {
-        "speci": "EUROPEAN_FAT_DORMOUSE",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Stechmuecke_Left_LightGreen": {
-        "speci": "GNAT",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Wolf_Left_Grey": {
-        "speci": "WOLF",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Stechmuecke_Right_Orange": {
-        "speci": "GNAT",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Reh_Left_Yellow": {
-        "speci": "ROE_DEER",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Frischling_Right_Red": {
-        "speci": "SQUEAKER",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Bechsteinfledermaus_Left_Brown": {
-        "speci": "BECHSTEIN",
-        "color": CardColor.OAK,
-        "position": CardPosition.LEFT
-    },
-    "Reh_Left_Blue": {
-        "speci": "ROE_DEER",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Luchs_Right_Yellow": {
-        "speci": "LYNX",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.RIGHT
-    },
-    "Steinmarder_Left_Green": {
-        "speci": "BEECH_MARTEN",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Bechsteinfledermaus_Right_LightGreen": {
-        "speci": "BECHSTEIN",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Feldhase_Left_Green": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Rothirsch_Right_Orange": {
-        "speci": "RED_DEER",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Wolf_Left_Red": {
-        "speci": "WOLF",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.LEFT
-    },
-    "Frischling_Left_Orange": {
-        "speci": "SQUEAKER",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.LEFT
-    },
-    "Rothirsch_Right_Brown": {
-        "speci": "RED_DEER",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Fuchs_Left_Green": {
-        "speci": "RED_FOX",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Frischling_Right_Brown": {
-        "speci": "SQUEAKER",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Waschbaer_Right_LightGreen": {
-        "speci": "RACCOON",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Frischling_Left_Brown": {
-        "speci": "SQUEAKER",
-        "color": CardColor.OAK,
-        "position": CardPosition.LEFT
-    },
-    "Luchs_Right_Blue": {
-        "speci": "LYNX",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Feldhase_Left_LightGreen": {
-        "speci": "EUROPEAN_HARE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Luchs_Left_Orange": {
-        "speci": "LYNX",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.LEFT
-    },
-    "Fuchs_Right_Grey": {
-        "speci": "RED_FOX",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Holzbiene_Left_Blue": {
-        "speci": "VIOLET_CARPENTER_BEE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Damhirsch_Right_LightGreen": {
-        "speci": "FALLOW_DEER",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Habicht_Grey": {
-        "speci": "GOSHAWK",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Moos_Yellow": {
-        "speci": "MOSS",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BOTTOM
-    },
-    "Buntspecht_Yellow": {
-        "speci": "GREAT_SPOTTED_WOODPECKER",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.TOP
-    },
-    "Waldameise_LightGreen": {
-        "speci": "WOOD_ANT",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Buchfink_LightGreen": {
-        "speci": "CHAFFINCH",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Waldameise_Green": {
-        "speci": "WOOD_ANT",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Waldkauz_Green": {
-        "speci": "TAWNY_OWL",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Hirschkaefer_Red": {
-        "speci": "STAG_BEETLE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Kaisermantel_Brown": {
-        "speci": "SILVER_WASHED_FRITILLARY",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Feuersalamander_Orange": {
-        "speci": "FIRE_SALAMANDER",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Schillerfalter_Orange": {
-        "speci": "PURPLE_EMPEROR",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Sumpfschildkroete_Red": {
-        "speci": "POND_TURTLE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Trauermantel_Red": {
-        "speci": "CAMBERWELL_BEAUTY",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Sumpfschildkroete_LightGreen": {
-        "speci": "POND_TURTLE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Groser-Fuchs_Blue": {
-        "speci": "LARGE_TORTOISESHELL",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Feuersalamander_Grey": {
-        "speci": "FIRE_SALAMANDER",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Gimpel_Grey": {
-        "speci": "BULLFINCH",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Laubfrosch_Yellow": {
-        "speci": "TREE_FROG",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BOTTOM
-    },
-    "Buchfink_Red": {
-        "speci": "CHAFFINCH",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Hirschkaefer_LightGreen": {
-        "speci": "STAG_BEETLE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Habicht_Blue": {
-        "speci": "GOSHAWK",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Brown": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichelhaeher_LightGreen": {
-        "speci": "EURASIAN_JAY",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Baumfarn_Orange": {
-        "speci": "TREE_FERNS",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Walderdbeeren_Red": {
-        "speci": "WILD_STRAWBERRIES",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Brombeeren_Blue": {
-        "speci": "BLACKBERRIES",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Moos_Grey": {
-        "speci": "MOSS",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Gluehwuermchen_Yellow": {
-        "speci": "FIREFLIES",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BOTTOM
-    },
-    "Brombeeren_LightGreen": {
-        "speci": "BLACKBERRIES",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Igel_Green": {
-        "speci": "HEDGEHOG",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Tagpfauenauge_Blue": {
-        "speci": "PEACOCK_BUTTERFLY",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Igel_Brown": {
-        "speci": "HEDGEHOG",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichhoernchen_Grey": {
-        "speci": "RED_SQUIRREL",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Orange": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichhoernchen_Orange": {
-        "speci": "RED_SQUIRREL",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Gluehwuermchen_Red": {
-        "speci": "FIREFLIES",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Buchfink_Green": {
-        "speci": "CHAFFINCH",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Blue": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Gluehwuermchen_Grey": {
-        "speci": "FIREFLIES",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Kaisermantel_Green": {
-        "speci": "SILVER_WASHED_FRITILLARY",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Tagpfauenauge_Brown": {
-        "speci": "PEACOCK_BUTTERFLY",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Pfifferling_Blue": {
-        "speci": "CHANTERELLE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Tagpfauenauge_Orange": {
-        "speci": "PEACOCK_BUTTERFLY",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Gluehwuermchen_Green": {
-        "speci": "FIREFLIES",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Groser-Fuchs_Red": {
-        "speci": "LARGE_TORTOISESHELL",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Maulwurf_Brown": {
-        "speci": "MOLE",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Igel_Orange": {
-        "speci": "HEDGEHOG",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Buntspecht_Grey": {
-        "speci": "GREAT_SPOTTED_WOODPECKER",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Eichelhaeher_Red": {
-        "speci": "EURASIAN_JAY",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Fliegenpilz_Blue": {
-        "speci": "FLY_AGARIC",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Waldkauz_LightGreen": {
-        "speci": "TAWNY_OWL",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Steinpilz_Grey": {
-        "speci": "PENNY_BUN",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichhoernchen_Green": {
-        "speci": "RED_SQUIRREL",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Feuersalamander_Yellow": {
-        "speci": "FIRE_SALAMANDER",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BOTTOM
-    },
-    "Schillerfalter_LightGreen": {
-        "speci": "PURPLE_EMPEROR",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Laubfrosch_Brown": {
-        "speci": "TREE_FROG",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Tagpfauenauge_Yellow": {
-        "speci": "PEACOCK_BUTTERFLY",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Green": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Trauermantel_LightGreen": {
-        "speci": "CAMBERWELL_BEAUTY",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Parasol_Orange": {
-        "speci": "PARASOL_MUSHROOM",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Habicht_Brown": {
-        "speci": "GOSHAWK",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Red": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichelhaeher_Orange": {
-        "speci": "EURASIAN_JAY",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Baumfarn_Blue": {
-        "speci": "TREE_FERNS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Waldkauz_Red": {
-        "speci": "TAWNY_OWL",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Erdkroete_Grey": {
-        "speci": "COMMON_TOAD",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Gimpel_Blue": {
-        "speci": "BULLFINCH",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Baumfarn_Yellow": {
-        "speci": "TREE_FERNS",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BOTTOM
-    },
-    "Eichhoernchen_Brown": {
-        "speci": "RED_SQUIRREL",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Walderdbeeren_LightGreen": {
-        "speci": "WILD_STRAWBERRIES",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Brombeeren_Green": {
-        "speci": "BLACKBERRIES",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Schillerfalter_Yellow": {
-        "speci": "PURPLE_EMPEROR",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.TOP
-    },
-    "Fliegenpilz_Brown": {
-        "speci": "FLY_AGARIC",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Trauermantel_Orange": {
-        "speci": "CAMBERWELL_BEAUTY",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Pfifferling_LightGreen": {
-        "speci": "CHANTERELLE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Groser-Fuchs_Green": {
-        "speci": "LARGE_TORTOISESHELL",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Maulwurf_Red": {
-        "speci": "MOLE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Parasol_Blue": {
-        "speci": "PARASOL_MUSHROOM",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Europaeische-Laerche": {
-        "speci": "LARIX",
-        "color": CardColor.LARIX,
-        "position": CardPosition.BASE
-    },
-    "Zirbelkiefer": {
-        "speci": "PINUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BASE
-    },
-    "Alpenmurmeltier_Left_Green": {
-        "speci": "MARMOTA_MARMOTA",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Gaemse_Right_Pink": {
-        "speci": "RUPICAPRA_RUPICAPRA",
-        "color": CardColor.PINUS,
-        "position": CardPosition.RIGHT
-    },
-    "Alpenmurmeltier_Left_Lila": {
-        "speci": "MARMOTA_MARMOTA",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Auerhuhn_Right_Grey": {
-        "speci": "TETRAO_UROGALLUS",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Schneehase_Left_Blue": {
-        "speci": "LEPUS_TIMIDUS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Alpenmurmeltier_Right_Pink": {
-        "speci": "MARMOTA_MARMOTA",
-        "color": CardColor.PINUS,
-        "position": CardPosition.RIGHT
-    },
-    "Steinbock_Left_Lila": {
-        "speci": "CAPRA_IBEX",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Alpenmurmeltier_Right_LightGreen": {
-        "speci": "MARMOTA_MARMOTA",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Gaemse_Left_Lila": {
-        "speci": "RUPICAPRA_RUPICAPRA",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Auerhuhn_Right_Green": {
-        "speci": "TETRAO_UROGALLUS",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Schneehase_Left_Lila": {
-        "speci": "LEPUS_TIMIDUS",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Gaemse_Right_Grey": {
-        "speci": "RUPICAPRA_RUPICAPRA",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Alpenfledermaus_Left_Blue": {
-        "speci": "HYPSUGO_SAVII",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Steinbock_Right_Pink": {
-        "speci": "CAPRA_IBEX",
-        "color": CardColor.PINUS,
-        "position": CardPosition.RIGHT
-    },
-    "Auerhuhn_Left_Lila": {
-        "speci": "TETRAO_UROGALLUS",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Alpenfledermaus_Right_Pink": {
-        "speci": "HYPSUGO_SAVII",
-        "color": CardColor.PINUS,
-        "position": CardPosition.RIGHT
-    },
-    "Auerhuhn_Left_Pink": {
-        "speci": "TETRAO_UROGALLUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.LEFT
-    },
-    "Steinbock_Right_Grey": {
-        "speci": "CAPRA_IBEX",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Alpen-Apollofalter_Pink": {
-        "speci": "PARNASSIUS_PHOEBUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.TOP
-    },
-    "Herbsttrompete_Lila": {
-        "speci": "CRATERELLUS_CORNUCOPIODES",
-        "color": CardColor.LARIX,
-        "position": CardPosition.BOTTOM
-    },
-    "Alpen-Apollofalter_Grey": {
-        "speci": "PARNASSIUS_PHOEBUS",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Edelweis_Pink": {
-        "speci": "LEONTOPODIUM_NIVALE",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BOTTOM
-    },
-    "Alpen-Apollofalter_Lila": {
-        "speci": "PARNASSIUS_PHOEBUS",
-        "color": CardColor.LARIX,
-        "position": CardPosition.TOP
-    },
-    "Heidelbeere_LightGreen": {
-        "speci": "VACCINIUM_MYRTILLUS",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Alpen-Apollofalter_Blue": {
-        "speci": "PARNASSIUS_PHOEBUS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Bergmolch_Pink": {
-        "speci": "ICHTHYOSAURA_ALPESTRIS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BOTTOM
-    },
-    "Steinadler_Green": {
-        "speci": "AQUILA_CHRYSAETOS",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Herbsttrompete_Pink": {
-        "speci": "CRATERELLUS_CORNUCOPIODES",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BOTTOM
-    },
-    "Bartgeier_Blue": {
-        "speci": "GYPAETUS_BARBATUS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Enzian_Lila": {
-        "speci": "GENTIANA",
-        "color": CardColor.LARIX,
-        "position": CardPosition.BOTTOM
-    },
-    "Steinadler_Lila": {
-        "speci": "AQUILA_CHRYSAETOS",
-        "color": CardColor.LARIX,
-        "position": CardPosition.TOP
-    },
-    "Bergmolch_Grey": {
-        "speci": "ICHTHYOSAURA_ALPESTRIS",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Kolkrabe_Lila": {
-        "speci": "CORVUS_CORAX",
-        "color": CardColor.LARIX,
-        "position": CardPosition.TOP
-    },
-    "Enzian_Green": {
-        "speci": "GENTIANA",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Kolkrabe_Grey": {
-        "speci": "CORVUS_CORAX",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.TOP
-    },
-    "Heidelbeere_Pink": {
-        "speci": "VACCINIUM_MYRTILLUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BOTTOM
-    },
-    "Bartgeier_Lila": {
-        "speci": "GYPAETUS_BARBATUS",
-        "color": CardColor.LARIX,
-        "position": CardPosition.TOP
-    },
-    "Bergmolch_Blue": {
-        "speci": "ICHTHYOSAURA_ALPESTRIS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Bartgeier_Pink": {
-        "speci": "GYPAETUS_BARBATUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.TOP
-    },
-    "Edelweis_Lila": {
-        "speci": "LEONTOPODIUM_NIVALE",
-        "color": CardColor.LARIX,
-        "position": CardPosition.BOTTOM
-    },
-    "Steinadler_Blue": {
-        "speci": "AQUILA_CHRYSAETOS",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Enzian_Pink": {
-        "speci": "GENTIANA",
-        "color": CardColor.PINUS,
-        "position": CardPosition.BOTTOM
-    },
-    "Alpenfledermaus_Left_Lila": {
-        "speci": "HYPSUGO_SAVII",
-        "color": CardColor.LARIX,
-        "position": CardPosition.LEFT
-    },
-    "Schneehase_Right_Pink": {
-        "speci": "LEPUS_TIMIDUS",
-        "color": CardColor.PINUS,
-        "position": CardPosition.RIGHT
-    },
-    "Holunder_Yellow": {
-        "speci": "SAMBUCUS",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.BASE
-    },
-    "Holunder_Red": {
-        "speci": "SAMBUCUS",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BASE
-    },
-    "Holunder_LightGreen": {
-        "speci": "SAMBUCUS",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BASE
-    },
-    "Holunder_Brown": {
-        "speci": "SAMBUCUS",
-        "color": CardColor.OAK,
-        "position": CardPosition.BASE
-    },
-    "Haselnuss_Orange": {
-        "speci": "COMMON_HAZEL",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BASE
-    },
-    "Haselnuss_Brown": {
-        "speci": "COMMON_HAZEL",
-        "color": CardColor.OAK,
-        "position": CardPosition.BASE
-    },
-    "Haselnuss_Green": {
-        "speci": "COMMON_HAZEL",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BASE
-    },
-    "Haselnuss_LightGreen": {
-        "speci": "COMMON_HAZEL",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BASE
-    },
-    "Schlehdorn_Grey": {
-        "speci": "BLACKTHORN",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BASE
-    },
-    "Schlehdorn_LightGreen": {
-        "speci": "BLACKTHORN",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BASE
-    },
-    "Schlehdorn_Blue": {
-        "speci": "BLACKTHORN",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BASE
-    },
-    "Schlehdorn_Red": {
-        "speci": "BLACKTHORN",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BASE
-    },
-    "Landkaertchen_Yellow": {
-        "speci": "MAP_BUTTERFLY",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.TOP
-    },
-    "Fingerhut_Grey": {
-        "speci": "DIGITALIS",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Landkaertchen_Red": {
-        "speci": "MAP_BUTTERFLY",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Brennnessel_LightGreen": {
-        "speci": "URTICA",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Landkaertchen_Brown": {
-        "speci": "MAP_BUTTERFLY",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Gruenes-Heupferd_Blue": {
-        "speci": "GREAT_GREEN_BUSH_CRICKET",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.BOTTOM
-    },
-    "Landkaertchen_Blue": {
-        "speci": "MAP_BUTTERFLY",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Schermaus_Red": {
-        "speci": "EUROPEAN_WATER_VOLE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Elster_Green": {
-        "speci": "EURASIAN_MAGPIE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Fingerhut_LightGreen": {
-        "speci": "DIGITALIS",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.BOTTOM
-    },
-    "Elster_Blue": {
-        "speci": "EURASIAN_MAGPIE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.TOP
-    },
-    "Brennnessel_Orange": {
-        "speci": "URTICA",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.BOTTOM
-    },
-    "Elster_LightGreen": {
-        "speci": "EURASIAN_MAGPIE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Gruenes-Heupferd_Green": {
-        "speci": "GREAT_GREEN_BUSH_CRICKET",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Nachtigall_Green": {
-        "speci": "COMMON_NIGHTINGALE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.TOP
-    },
-    "Fingerhut_Red": {
-        "speci": "DIGITALIS",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Nachtigall_Brown": {
-        "speci": "COMMON_NIGHTINGALE",
-        "color": CardColor.OAK,
-        "position": CardPosition.TOP
-    },
-    "Brennnessel_Red": {
-        "speci": "URTICA",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.BOTTOM
-    },
-    "Nachtigall_Orange": {
-        "speci": "COMMON_NIGHTINGALE",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.TOP
-    },
-    "Schermaus_Green": {
-        "speci": "EUROPEAN_WATER_VOLE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.BOTTOM
-    },
-    "Schleiereule_LightGreen": {
-        "speci": "BARN_OWL",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.TOP
-    },
-    "Fingerhut_Brown": {
-        "speci": "DIGITALIS",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Schleiereule_Red": {
-        "speci": "BARN_OWL",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.TOP
-    },
-    "Gruenes-Heupferd_Brown": {
-        "speci": "GREAT_GREEN_BUSH_CRICKET",
-        "color": CardColor.OAK,
-        "position": CardPosition.BOTTOM
-    },
-    "Bache_Left_LightGreen": {
-        "speci": "WILD_BOAR_FEMALE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Bienenschwarm_Right_Red": {
-        "speci": "BEEHIVE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Wisent_Left_Brown": {
-        "speci": "EUROPEAN_BISON",
-        "color": CardColor.OAK,
-        "position": CardPosition.LEFT
-    },
-    "Bache_Right_Red": {
-        "speci": "WILD_BOAR_FEMALE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Bache_Left_Blue": {
-        "speci": "WILD_BOAR_FEMALE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Wildkatze_Right_Orange": {
-        "speci": "EUROPEAN_WILDCAT",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.RIGHT
-    },
-    "Zwergfledermaus_Left_Yellow": {
-        "speci": "COMMON_PIPISTRELLE",
-        "color": CardColor.LINDEN,
-        "position": CardPosition.LEFT
-    },
-    "Frischling-Waldrand_Right_Blue": {
-        "speci": "SQUEAKER_EDGE",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Frischling-Waldrand_Left_Orange": {
-        "speci": "SQUEAKER_EDGE",
-        "color": CardColor.HORSE_CHESTNUT,
-        "position": CardPosition.LEFT
-    },
-    "Schnake_Right_Green": {
-        "speci": "MOSQUITO",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Waldiltis_Left_Blue": {
-        "speci": "EUROPEAN_POLECAT",
-        "color": CardColor.SILVER_FIR,
-        "position": CardPosition.LEFT
-    },
-    "Frischling-Waldrand_Right_Grey": {
-        "speci": "SQUEAKER_EDGE",
-        "color": CardColor.DOUGLAS_FIR,
-        "position": CardPosition.RIGHT
-    },
-    "Bienenschwarm_Left_Green": {
-        "speci": "BEEHIVE",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Zwergfledermaus_Right_Red": {
-        "speci": "COMMON_PIPISTRELLE",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Wildkatze_Left_Brown": {
-        "speci": "EUROPEAN_WILDCAT",
-        "color": CardColor.OAK,
-        "position": CardPosition.LEFT
-    },
-    "Bienenschwarm_Right_LightGreen": {
-        "speci": "BEEHIVE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.RIGHT
-    },
-    "Zwergfledermaus_Left_LightGreen": {
-        "speci": "COMMON_PIPISTRELLE",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Wisent_Right_Green": {
-        "speci": "EUROPEAN_BISON",
-        "color": CardColor.BEECH,
-        "position": CardPosition.RIGHT
-    },
-    "Wisent_Left_Green": {
-        "speci": "EUROPEAN_BISON",
-        "color": CardColor.BEECH,
-        "position": CardPosition.LEFT
-    },
-    "Waldiltis_Right_Red": {
-        "speci": "EUROPEAN_POLECAT",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.RIGHT
-    },
-    "Schnake_Left_LightGreen": {
-        "speci": "MOSQUITO",
-        "color": CardColor.BIRCH,
-        "position": CardPosition.LEFT
-    },
-    "Waldiltis_Right_Brown": {
-        "speci": "EUROPEAN_POLECAT",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    },
-    "Wildkatze_Left_Red": {
-        "speci": "EUROPEAN_WILDCAT",
-        "color": CardColor.SYCAMORE,
-        "position": CardPosition.LEFT
-    },
-    "Schnake_Right_Brown": {
-        "speci": "MOSQUITO",
-        "color": CardColor.OAK,
-        "position": CardPosition.RIGHT
-    }
+  "Baumsproessling": {
+    "speci": CardId.SAMPLING,
+    "color": CardColor.NONE,
+    "position": CardPosition.BASE,
+    glCardName: "sampling",
+  },
+  "Linde": {
+    "speci": CardId.LINDEN,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BASE,
+    glCardName: "linden",
+  },
+  "Eiche": {
+    "speci": CardId.OAK,
+    "color": CardColor.OAK,
+    "position": CardPosition.BASE,
+    glCardName: "oak",
+  },
+  "Tanne": {
+    "speci": CardId.SILVER_FIR,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BASE,
+    glCardName: "silverFir",
+  },
+  "Birke": {
+    "speci": CardId.BIRCH,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BASE,
+    glCardName: "birch",
+  },
+  "Buche": {
+    "speci": CardId.BEECH,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BASE,
+    glCardName: "beech",
+
+  },
+  "Ahorn": {
+    "speci": CardId.SYCAMORE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BASE,
+    glCardName: "sycamore",
+  },
+  "Douglasie": {
+    "speci": CardId.DOUGLAS_FIR,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BASE,
+    glCardName: "douglasFir",
+  },
+  "Kastanie": {
+    "speci": CardId.HORSE_CHESTNUT,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BASE,
+    glCardName: "horseChestnut",
+  },
+  "Feldhase_Left_Yellow": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanHare",
+  },
+  "Dachs_Right_Grey": {
+    "speci": CardId.EUROPEAN_BADGER,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanBadger",
+  },
+  "Feldhase_Left_Brown": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.OAK,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanHare",
+  },
+  "Hufeisennase_Right_Yellow": {
+    "speci": CardId.GREATER_HORSESHOE_BAT,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.RIGHT,
+    glCardName: "greaterHorseshoeBat",
+  },
+  "Feldhase_Left_Blue": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanHare",
+  },
+  "Fuchs_Right_Brown": {
+    "speci": CardId.RED_FOX,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "redFox",
+  },
+  "Waschbaer_Left_Grey": {
+    "speci": CardId.RACCOON,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "raccoon",
+  },
+  "Feldhase_Right_Red": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanHare",
+  },
+  "Wildschwein_Left_Red": {
+    "speci": CardId.WILD_BOAR,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.LEFT,
+    glCardName: "wildBoar",
+  },
+  "Feldhase_Right_Blue": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanHare",
+  },
+  "Braunes-Langohr_Left_Red": {
+    "speci": CardId.BROWN_LONG_EARED_BAT,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.LEFT,
+    glCardName: "brownLongEaredBat",
+  },
+  "Feldhase_Right_Yellow": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanHare",
+  },
+  "Waschbaer_Left_Blue": {
+    "speci": CardId.RACCOON,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "raccoon",
+  },
+  "Reh_Right_Green": {
+    "speci": CardId.ROE_DEER,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "roeDeer",
+  },
+  "Mopsfledermaus_Left_Orange": {
+    "speci": CardId.BARBASTELLE_BAT,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.LEFT,
+    glCardName: "barbastelleBat",
+  },
+  "Wildschwein_Right_Brown": {
+    "speci": CardId.WILD_BOAR,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "wildBoar",
+  },
+  "Braunbaer_Left_Yellow": {
+    "speci": CardId.BROWN_BEAR,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "brownBear",
+  },
+  "Waschbaer_Right_Blue": {
+    "speci": CardId.RACCOON,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "raccoon",
+  },
+  "Steinmarder_Left_Red": {
+    "speci": CardId.BEECH_MARTEN,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.LEFT,
+    glCardName: "beechMarten",
+  },
+  "Braunbaer_Right_Orange": {
+    "speci": CardId.BROWN_BEAR,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "brownBear",
+  },
+  "Rothirsch_Left_Yellow": {
+    "speci": CardId.RED_DEER,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "redDeer",
+  },
+  "Braunbaer_Right_Green": {
+    "speci": CardId.BROWN_BEAR,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "brownBear",
+  },
+  "Mopsfledermaus_Left_Blue": {
+    "speci": CardId.BARBASTELLE_BAT,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "barbastelleBat",
+  },
+  "Steinmarder_Right_Orange": {
+    "speci": CardId.BEECH_MARTEN,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "beechMarten",
+  },
+  "Luchs_Left_Grey": {
+    "speci": CardId.LYNX,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "lynx",
+  },
+  "Feldhase_Right_LightGreen": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanHare",
+  },
+  "Wildschwein_Left_LightGreen": {
+    "speci": CardId.WILD_BOAR,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "wildBoar",
+  },
+  "Steinmarder_Right_Brown": {
+    "speci": CardId.BEECH_MARTEN,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "beechMarten",
+  },
+  "Dachs_Left_Orange": {
+    "speci": CardId.EUROPEAN_BADGER,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanBadger",
+  },
+  "Stechmuecke_Right_Brown": {
+    "speci": CardId.GNAT,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "gnat",
+  },
+  "Fuchs_Left_Yellow": {
+    "speci": CardId.RED_FOX,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "redFox",
+  },
+  "Holzbiene_Right_Grey": {
+    "speci": CardId.VIOLET_CARPENTER_BEE,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "violetCarpenterBee",
+  },
+  "Reh_Right_Orange": {
+    "speci": CardId.ROE_DEER,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "roeDeer",
+  },
+  "Damhirsch_Left_Yellow": {
+    "speci": CardId.FALLOW_DEER,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "fallowDeer",
+  },
+  "Wildschwein_Right_Grey": {
+    "speci": CardId.WILD_BOAR,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "wildBoar",
+  },
+  "Reh_Right_LightGreen": {
+    "speci": CardId.ROE_DEER,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "roeDeer",
+  },
+  "Rothirsch_Left_Blue": {
+    "speci": CardId.RED_DEER,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "redDeer",
+  },
+  "Damhirsch_Right_Red": {
+    "speci": CardId.FALLOW_DEER,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "fallowDeer",
+  },
+  "Holzbiene_Left_Grey": {
+    "speci": CardId.VIOLET_CARPENTER_BEE,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "violetCarpenterBee",
+  },
+  "Luchs_Right_Green": {
+    "speci": CardId.LYNX,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "lynx",
+  },
+  "Siebenschlaefer_Left_Green": {
+    "speci": CardId.EUROPEAN_FAT_DORMOUSE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanFatDormouse",
+  },
+  "Mopsfledermaus_Right_Brown": {
+    "speci": CardId.BARBASTELLE_BAT,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "barbastelleBat",
+  },
+  "Hufeisennase_Left_Green": {
+    "speci": CardId.GREATER_HORSESHOE_BAT,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "greaterHorseshoeBat",
+  },
+  "Siebenschlaefer_Right_Grey": {
+    "speci": CardId.EUROPEAN_FAT_DORMOUSE,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanFatDormouse",
+  },
+  "Wolf_Right_Blue": {
+    "speci": CardId.WOLF,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "wolf",
+  },
+  "Siebenschlaefer_Left_Blue": {
+    "speci": CardId.EUROPEAN_FAT_DORMOUSE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanFatDormouse",
+  },
+  "Braunes-Langohr_Right_Green": {
+    "speci": CardId.BROWN_LONG_EARED_BAT,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "brownLongEaredBat",
+  },
+  "Bechsteinfledermaus_Left_Green": {
+    "speci": CardId.BECHSTEIN,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "bechstein",
+  },
+  "Siebenschlaefer_Right_Brown": {
+    "speci": CardId.EUROPEAN_FAT_DORMOUSE,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanFatDormouse",
+  },
+  "Stechmuecke_Left_LightGreen": {
+    "speci": CardId.GNAT,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "gnat",
+  },
+  "Wolf_Left_Grey": {
+    "speci": CardId.WOLF,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "wolf",
+  },
+  "Stechmuecke_Right_Orange": {
+    "speci": CardId.GNAT,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "gnat",
+  },
+  "Reh_Left_Yellow": {
+    "speci": CardId.ROE_DEER,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "roeDeer",
+  },
+  "Frischling_Right_Red": {
+    "speci": CardId.SQUEAKER,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "squeaker",
+  },
+  "Bechsteinfledermaus_Left_Brown": {
+    "speci": CardId.BECHSTEIN,
+    "color": CardColor.OAK,
+    "position": CardPosition.LEFT,
+    glCardName: "bechstein",
+  },
+  "Reh_Left_Blue": {
+    "speci": CardId.ROE_DEER,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "roeDeer",
+  },
+  "Luchs_Right_Yellow": {
+    "speci": CardId.LYNX,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.RIGHT,
+    glCardName: "lynx",
+  },
+  "Steinmarder_Left_Green": {
+    "speci": CardId.BEECH_MARTEN,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "beechMarten",
+  },
+  "Bechsteinfledermaus_Right_LightGreen": {
+    "speci": CardId.BECHSTEIN,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "bechstein",
+  },
+  "Feldhase_Left_Green": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanHare",
+  },
+  "Rothirsch_Right_Orange": {
+    "speci": CardId.RED_DEER,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "redDeer",
+  },
+  "Wolf_Left_Red": {
+    "speci": CardId.WOLF,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.LEFT,
+    glCardName: "wolf",
+  },
+  "Frischling_Left_Orange": {
+    "speci": CardId.SQUEAKER,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.LEFT,
+    glCardName: "squeaker",
+  },
+  "Rothirsch_Right_Brown": {
+    "speci": CardId.RED_DEER,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "redDeer",
+  },
+  "Fuchs_Left_Green": {
+    "speci": CardId.RED_FOX,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "redFox",
+  },
+  "Frischling_Right_Brown": {
+    "speci": CardId.SQUEAKER,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "squeaker",
+  },
+  "Waschbaer_Right_LightGreen": {
+    "speci": CardId.RACCOON,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "raccoon",
+  },
+  "Frischling_Left_Brown": {
+    "speci": CardId.SQUEAKER,
+    "color": CardColor.OAK,
+    "position": CardPosition.LEFT,
+    glCardName: "squeaker",
+  },
+  "Luchs_Right_Blue": {
+    "speci": CardId.LYNX,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "lynx",
+  },
+  "Feldhase_Left_LightGreen": {
+    "speci": CardId.EUROPEAN_HARE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanHare",
+  },
+  "Luchs_Left_Orange": {
+    "speci": CardId.LYNX,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.LEFT,
+    glCardName: "lynx",
+  },
+  "Fuchs_Right_Grey": {
+    "speci": CardId.RED_FOX,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "redFox",
+  },
+  "Holzbiene_Left_Blue": {
+    "speci": CardId.VIOLET_CARPENTER_BEE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "violetCarpenterBee",
+  },
+  "Damhirsch_Right_LightGreen": {
+    "speci": CardId.FALLOW_DEER,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "fallowDeer",
+  },
+  "Habicht_Grey": {
+    "speci": CardId.GOSHAWK,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "goshawk",
+  },
+  "Moos_Yellow": {
+    "speci": CardId.MOSS,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BOTTOM,
+    glCardName: "moss",
+  },
+  "Buntspecht_Yellow": {
+    "speci": CardId.GREAT_SPOTTED_WOODPECKER,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.TOP,
+    glCardName: "greatSpottedWoodpecker",
+  },
+  "Waldameise_LightGreen": {
+    "speci": CardId.WOOD_ANT,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "woodAnt",
+  },
+  "Buchfink_LightGreen": {
+    "speci": CardId.CHAFFINCH,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "chaffinch",
+  },
+  "Waldameise_Green": {
+    "speci": CardId.WOOD_ANT,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "woodAnt",
+  },
+  "Waldkauz_Green": {
+    "speci": CardId.TAWNY_OWL,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "tawnyOwl",
+  },
+  "Hirschkaefer_Red": {
+    "speci": CardId.STAG_BEETLE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "stagBeetle",
+  },
+  "Kaisermantel_Brown": {
+    "speci": CardId.SILVER_WASHED_FRITILLARY,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "silverWashedFritillary",
+  },
+  "Feuersalamander_Orange": {
+    "speci": CardId.FIRE_SALAMANDER,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireSalamander",
+  },
+  "Schillerfalter_Orange": {
+    "speci": CardId.PURPLE_EMPEROR,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "purpleEmperor",
+  },
+  "Sumpfschildkroete_Red": {
+    "speci": CardId.POND_TURTLE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "pondTurtle",
+  },
+  "Trauermantel_Red": {
+    "speci": CardId.CAMBERWELL_BEAUTY,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "camberwellBeauty",
+  },
+  "Sumpfschildkroete_LightGreen": {
+    "speci": CardId.POND_TURTLE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "pondTurtle",
+  },
+  "Groser-Fuchs_Blue": {
+    "speci": CardId.LARGE_TORTOISESHELL,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "largeTortoiseshell",
+  },
+  "Feuersalamander_Grey": {
+    "speci": CardId.FIRE_SALAMANDER,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireSalamander",
+  },
+  "Gimpel_Grey": {
+    "speci": CardId.BULLFINCH,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "bullfinch",
+  },
+  "Laubfrosch_Yellow": {
+    "speci": CardId.TREE_FROG,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BOTTOM,
+    glCardName: "treeFrog",
+  },
+  "Buchfink_Red": {
+    "speci": CardId.CHAFFINCH,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "chaffinch",
+  },
+  "Hirschkaefer_LightGreen": {
+    "speci": CardId.STAG_BEETLE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "stagBeetle",
+  },
+  "Habicht_Blue": {
+    "speci": CardId.GOSHAWK,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "goshawk",
+  },
+  "Erdkroete_Brown": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Eichelhaeher_LightGreen": {
+    "speci": CardId.EURASIAN_JAY,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianJay",
+  },
+  "Baumfarn_Orange": {
+    "speci": CardId.TREE_FERNS,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "treeFerns",
+  },
+  "Walderdbeeren_Red": {
+    "speci": CardId.WILD_STRAWBERRIES,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "wildStrawberries",
+  },
+  "Brombeeren_Blue": {
+    "speci": CardId.BLACKBERRIES,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "blackberries",
+  },
+  "Moos_Grey": {
+    "speci": CardId.MOSS,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "moss",
+  },
+  "Gluehwuermchen_Yellow": {
+    "speci": CardId.FIREFLIES,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireflies",
+  },
+  "Brombeeren_LightGreen": {
+    "speci": CardId.BLACKBERRIES,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "blackberries",
+  },
+  "Igel_Green": {
+    "speci": CardId.HEDGEHOG,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "hedgehog",
+  },
+  "Tagpfauenauge_Blue": {
+    "speci": CardId.PEACOCK_BUTTERFLY,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "peacockButterfly",
+  },
+  "Igel_Brown": {
+    "speci": CardId.HEDGEHOG,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "hedgehog",
+  },
+  "Eichhoernchen_Grey": {
+    "speci": CardId.RED_SQUIRREL,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "redSquirrel",
+  },
+  "Erdkroete_Orange": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Eichhoernchen_Orange": {
+    "speci": CardId.RED_SQUIRREL,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "redSquirrel",
+  },
+  "Gluehwuermchen_Red": {
+    "speci": CardId.FIREFLIES,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireflies",
+  },
+  "Buchfink_Green": {
+    "speci": CardId.CHAFFINCH,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "chaffinch",
+  },
+  "Erdkroete_Blue": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Gluehwuermchen_Grey": {
+    "speci": CardId.FIREFLIES,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireflies",
+  },
+  "Kaisermantel_Green": {
+    "speci": CardId.SILVER_WASHED_FRITILLARY,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "silverWashedFritillary",
+  },
+  "Tagpfauenauge_Brown": {
+    "speci": CardId.PEACOCK_BUTTERFLY,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "peacockButterfly",
+  },
+  "Pfifferling_Blue": {
+    "speci": CardId.CHANTERELLE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "chanterelle",
+  },
+  "Tagpfauenauge_Orange": {
+    "speci": CardId.PEACOCK_BUTTERFLY,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "peacockButterfly",
+  },
+  "Gluehwuermchen_Green": {
+    "speci": CardId.FIREFLIES,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireflies",
+  },
+  "Groser-Fuchs_Red": {
+    "speci": CardId.LARGE_TORTOISESHELL,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "largeTortoiseshell",
+  },
+  "Maulwurf_Brown": {
+    "speci": CardId.MOLE,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "mole",
+  },
+  "Igel_Orange": {
+    "speci": CardId.HEDGEHOG,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "hedgehog",
+  },
+  "Buntspecht_Grey": {
+    "speci": CardId.GREAT_SPOTTED_WOODPECKER,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "greatSpottedWoodpecker",
+  },
+  "Eichelhaeher_Red": {
+    "speci": CardId.EURASIAN_JAY,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianJay",
+  },
+  "Fliegenpilz_Blue": {
+    "speci": CardId.FLY_AGARIC,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "flyAgaric",
+  },
+  "Waldkauz_LightGreen": {
+    "speci": CardId.TAWNY_OWL,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "tawnyOwl",
+  },
+  "Steinpilz_Grey": {
+    "speci": CardId.PENNY_BUN,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "pennyBun",
+  },
+  "Eichhoernchen_Green": {
+    "speci": CardId.RED_SQUIRREL,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "redSquirrel",
+  },
+  "Feuersalamander_Yellow": {
+    "speci": CardId.FIRE_SALAMANDER,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BOTTOM,
+    glCardName: "fireSalamander",
+  },
+  "Schillerfalter_LightGreen": {
+    "speci": CardId.PURPLE_EMPEROR,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "purpleEmperor",
+  },
+  "Laubfrosch_Brown": {
+    "speci": CardId.TREE_FROG,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "treeFrog",
+  },
+  "Tagpfauenauge_Yellow": {
+    "speci": CardId.PEACOCK_BUTTERFLY,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.TOP,
+    glCardName: "peacockButterfly",
+  },
+  "Erdkroete_Green": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Trauermantel_LightGreen": {
+    "speci": CardId.CAMBERWELL_BEAUTY,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "camberwellBeauty",
+  },
+  "Parasol_Orange": {
+    "speci": CardId.PARASOL_MUSHROOM,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "parasolMushroom",
+  },
+  "Habicht_Brown": {
+    "speci": CardId.GOSHAWK,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "goshawk",
+  },
+  "Erdkroete_Red": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Eichelhaeher_Orange": {
+    "speci": CardId.EURASIAN_JAY,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianJay",
+  },
+  "Baumfarn_Blue": {
+    "speci": CardId.TREE_FERNS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "treeFerns",
+  },
+  "Waldkauz_Red": {
+    "speci": CardId.TAWNY_OWL,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "tawnyOwl",
+  },
+  "Erdkroete_Grey": {
+    "speci": CardId.COMMON_TOAD,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "commonToad",
+  },
+  "Gimpel_Blue": {
+    "speci": CardId.BULLFINCH,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "bullfinch",
+  },
+  "Baumfarn_Yellow": {
+    "speci": CardId.TREE_FERNS,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BOTTOM,
+    glCardName: "treeFerns",
+  },
+  "Eichhoernchen_Brown": {
+    "speci": CardId.RED_SQUIRREL,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "redSquirrel",
+  },
+  "Walderdbeeren_LightGreen": {
+    "speci": CardId.WILD_STRAWBERRIES,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "wildStrawberries",
+  },
+  "Brombeeren_Green": {
+    "speci": CardId.BLACKBERRIES,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "blackberries",
+  },
+  "Schillerfalter_Yellow": {
+    "speci": CardId.PURPLE_EMPEROR,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.TOP,
+    glCardName: "purpleEmperor",
+  },
+  "Fliegenpilz_Brown": {
+    "speci": CardId.FLY_AGARIC,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "flyAgaric",
+  },
+  "Trauermantel_Orange": {
+    "speci": CardId.CAMBERWELL_BEAUTY,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "camberwellBeauty",
+  },
+  "Pfifferling_LightGreen": {
+    "speci": CardId.CHANTERELLE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "chanterelle",
+  },
+  "Groser-Fuchs_Green": {
+    "speci": CardId.LARGE_TORTOISESHELL,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "largeTortoiseshell",
+  },
+  "Maulwurf_Red": {
+    "speci": CardId.MOLE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "mole",
+  },
+  "Parasol_Blue": {
+    "speci": CardId.PARASOL_MUSHROOM,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "parasolMushroom",
+  },
+  "Europaeische-Laerche": {
+    "speci": CardId.LARIX,
+    "color": CardColor.LARIX,
+    "position": CardPosition.BASE,
+    glCardName: "larix",
+  },
+  "Zirbelkiefer": {
+    "speci": CardId.PINUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BASE,
+    glCardName: "pinus",
+  },
+  "Alpenmurmeltier_Left_Green": {
+    "speci": CardId.MARMOTA_MARMOTA,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "marmotaMarmota",
+  },
+  "Gaemse_Right_Pink": {
+    "speci": CardId.RUPICAPRA_RUPICAPRA,
+    "color": CardColor.PINUS,
+    "position": CardPosition.RIGHT,
+    glCardName: "rupicapraRupicapra",
+  },
+  "Alpenmurmeltier_Left_Lila": {
+    "speci": CardId.MARMOTA_MARMOTA,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "marmotaMarmota",
+  },
+  "Auerhuhn_Right_Grey": {
+    "speci": CardId.TETRAO_UROGALLUS,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "tetraoUrogallus",
+  },
+  "Schneehase_Left_Blue": {
+    "speci": CardId.LEPUS_TIMIDUS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "lepusTimidus",
+  },
+  "Alpenmurmeltier_Right_Pink": {
+    "speci": CardId.MARMOTA_MARMOTA,
+    "color": CardColor.PINUS,
+    "position": CardPosition.RIGHT,
+    glCardName: "marmotaMarmota",
+  },
+  "Steinbock_Left_Lila": {
+    "speci": CardId.CAPRA_IBEX,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "capraIbex",
+  },
+  "Alpenmurmeltier_Right_LightGreen": {
+    "speci": CardId.MARMOTA_MARMOTA,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "marmotaMarmota",
+  },
+  "Gaemse_Left_Lila": {
+    "speci": CardId.RUPICAPRA_RUPICAPRA,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "rupicapraRupicapra",
+  },
+  "Auerhuhn_Right_Green": {
+    "speci": CardId.TETRAO_UROGALLUS,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "tetraoUrogallus",
+  },
+  "Schneehase_Left_Lila": {
+    "speci": CardId.LEPUS_TIMIDUS,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "lepusTimidus",
+  },
+  "Gaemse_Right_Grey": {
+    "speci": CardId.RUPICAPRA_RUPICAPRA,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "rupicapraRupicapra",
+  },
+  "Alpenfledermaus_Left_Blue": {
+    "speci": CardId.HYPSUGO_SAVII,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "hypsugoSavii",
+  },
+  "Steinbock_Right_Pink": {
+    "speci": CardId.CAPRA_IBEX,
+    "color": CardColor.PINUS,
+    "position": CardPosition.RIGHT,
+    glCardName: "capraIbex",
+  },
+  "Auerhuhn_Left_Lila": {
+    "speci": CardId.TETRAO_UROGALLUS,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "tetraoUrogallus",
+  },
+  "Alpenfledermaus_Right_Pink": {
+    "speci": CardId.HYPSUGO_SAVII,
+    "color": CardColor.PINUS,
+    "position": CardPosition.RIGHT,
+    glCardName: "hypsugoSavii",
+  },
+  "Auerhuhn_Left_Pink": {
+    "speci": CardId.TETRAO_UROGALLUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.LEFT,
+    glCardName: "tetraoUrogallus",
+  },
+  "Steinbock_Right_Grey": {
+    "speci": CardId.CAPRA_IBEX,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "capraIbex",
+  },
+  "Alpen-Apollofalter_Pink": {
+    "speci": CardId.PARNASSIUS_PHOEBUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.TOP,
+    glCardName: "parnassiusPhoebus",
+  },
+  "Herbsttrompete_Lila": {
+    "speci": CardId.CRATERELLUS_CORNUCOPIODES,
+    "color": CardColor.LARIX,
+    "position": CardPosition.BOTTOM,
+    glCardName: "craterellusCornucopiodes",
+  },
+  "Alpen-Apollofalter_Grey": {
+    "speci": CardId.PARNASSIUS_PHOEBUS,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "parnassiusPhoebus",
+  },
+  "Edelweis_Pink": {
+    "speci": CardId.LEONTOPODIUM_NIVALE,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BOTTOM,
+    glCardName: "leontopodiumNivale",
+  },
+  "Alpen-Apollofalter_Lila": {
+    "speci": CardId.PARNASSIUS_PHOEBUS,
+    "color": CardColor.LARIX,
+    "position": CardPosition.TOP,
+    glCardName: "parnassiusPhoebus",
+  },
+  "Heidelbeere_LightGreen": {
+    "speci": CardId.VACCINIUM_MYRTILLUS,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "vacciniumMyrtillus",
+  },
+  "Alpen-Apollofalter_Blue": {
+    "speci": CardId.PARNASSIUS_PHOEBUS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "parnassiusPhoebus",
+  },
+  "Bergmolch_Pink": {
+    "speci": CardId.ICHTHYOSAURA_ALPESTRIS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BOTTOM,
+    glCardName: "ichthyosauraAlpestris",
+  },
+  "Steinadler_Green": {
+    "speci": CardId.AQUILA_CHRYSAETOS,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "aquilaChrysaetos",
+  },
+  "Herbsttrompete_Pink": {
+    "speci": CardId.CRATERELLUS_CORNUCOPIODES,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BOTTOM,
+    glCardName: "craterellusCornucopiodes",
+  },
+  "Bartgeier_Blue": {
+    "speci": CardId.GYPAETUS_BARBATUS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "gypaetusBarbatus",
+  },
+  "Enzian_Lila": {
+    "speci": CardId.GENTIANA,
+    "color": CardColor.LARIX,
+    "position": CardPosition.BOTTOM,
+    glCardName: "gentiana",
+  },
+  "Steinadler_Lila": {
+    "speci": CardId.AQUILA_CHRYSAETOS,
+    "color": CardColor.LARIX,
+    "position": CardPosition.TOP,
+    glCardName: "aquilaChrysaetos",
+  },
+  "Bergmolch_Grey": {
+    "speci": CardId.ICHTHYOSAURA_ALPESTRIS,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "ichthyosauraAlpestris",
+  },
+  "Kolkrabe_Lila": {
+    "speci": CardId.CORVUS_CORAX,
+    "color": CardColor.LARIX,
+    "position": CardPosition.TOP,
+    glCardName: "corvusCorax",
+  },
+  "Enzian_Green": {
+    "speci": CardId.GENTIANA,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "gentiana",
+  },
+  "Kolkrabe_Grey": {
+    "speci": CardId.CORVUS_CORAX,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "corvusCorax",
+  },
+  "Heidelbeere_Pink": {
+    "speci": CardId.VACCINIUM_MYRTILLUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BOTTOM,
+    glCardName: "vacciniumMyrtillus",
+  },
+  "Bartgeier_Lila": {
+    "speci": CardId.GYPAETUS_BARBATUS,
+    "color": CardColor.LARIX,
+    "position": CardPosition.TOP,
+    glCardName: "gypaetusBarbatus",
+  },
+  "Bergmolch_Blue": {
+    "speci": CardId.ICHTHYOSAURA_ALPESTRIS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "ichthyosauraAlpestris",
+  },
+  "Bartgeier_Pink": {
+    "speci": CardId.GYPAETUS_BARBATUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.TOP,
+    glCardName: "gypaetusBarbatus",
+  },
+  "Edelweis_Lila": {
+    "speci": CardId.LEONTOPODIUM_NIVALE,
+    "color": CardColor.LARIX,
+    "position": CardPosition.BOTTOM,
+    glCardName: "leontopodiumNivale",
+  },
+  "Steinadler_Blue": {
+    "speci": CardId.AQUILA_CHRYSAETOS,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "aquilaChrysaetos",
+  },
+  "Enzian_Pink": {
+    "speci": CardId.GENTIANA,
+    "color": CardColor.PINUS,
+    "position": CardPosition.BOTTOM,
+    glCardName: "gentiana",
+  },
+  "Alpenfledermaus_Left_Lila": {
+    "speci": CardId.HYPSUGO_SAVII,
+    "color": CardColor.LARIX,
+    "position": CardPosition.LEFT,
+    glCardName: "hypsugoSavii",
+  },
+  "Schneehase_Right_Pink": {
+    "speci": CardId.LEPUS_TIMIDUS,
+    "color": CardColor.PINUS,
+    "position": CardPosition.RIGHT,
+    glCardName: "lepusTimidus",
+  },
+  "Holunder_Yellow": {
+    "speci": CardId.SAMBUCUS,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.BASE,
+    glCardName: "sambucus",
+  },
+  "Holunder_Red": {
+    "speci": CardId.SAMBUCUS,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BASE,
+    glCardName: "sambucus",
+  },
+  "Holunder_LightGreen": {
+    "speci": CardId.SAMBUCUS,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BASE,
+    glCardName: "sambucus",
+  },
+  "Holunder_Brown": {
+    "speci": CardId.SAMBUCUS,
+    "color": CardColor.OAK,
+    "position": CardPosition.BASE,
+    glCardName: "sambucus",
+  },
+  "Haselnuss_Orange": {
+    "speci": CardId.COMMON_HAZEL,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BASE,
+    glCardName: "commonHazel",
+  },
+  "Haselnuss_Brown": {
+    "speci": CardId.COMMON_HAZEL,
+    "color": CardColor.OAK,
+    "position": CardPosition.BASE,
+    glCardName: "commonHazel",
+  },
+  "Haselnuss_Green": {
+    "speci": CardId.COMMON_HAZEL,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BASE,
+    glCardName: "commonHazel",
+  },
+  "Haselnuss_LightGreen": {
+    "speci": CardId.COMMON_HAZEL,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BASE,
+    glCardName: "commonHazel",
+  },
+  "Schlehdorn_Grey": {
+    "speci": CardId.BLACKTHORN,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BASE,
+    glCardName: "blackthorn",
+  },
+  "Schlehdorn_LightGreen": {
+    "speci": CardId.BLACKTHORN,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BASE,
+    glCardName: "blackthorn",
+  },
+  "Schlehdorn_Blue": {
+    "speci": CardId.BLACKTHORN,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BASE,
+    glCardName: "blackthorn",
+  },
+  "Schlehdorn_Red": {
+    "speci": CardId.BLACKTHORN,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BASE,
+    glCardName: "blackthorn",
+  },
+  "Landkaertchen_Yellow": {
+    "speci": CardId.MAP_BUTTERFLY,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.TOP,
+    glCardName: "mapButterfly",
+  },
+  "Fingerhut_Grey": {
+    "speci": CardId.DIGITALIS,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "digitalis",
+  },
+  "Landkaertchen_Red": {
+    "speci": CardId.MAP_BUTTERFLY,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "mapButterfly",
+  },
+  "Brennnessel_LightGreen": {
+    "speci": CardId.URTICA,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "urtica",
+  },
+  "Landkaertchen_Brown": {
+    "speci": CardId.MAP_BUTTERFLY,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "mapButterfly",
+  },
+  "Gruenes-Heupferd_Blue": {
+    "speci": CardId.GREAT_GREEN_BUSH_CRICKET,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.BOTTOM,
+    glCardName: "greatGreenBushCricket",
+  },
+  "Landkaertchen_Blue": {
+    "speci": CardId.MAP_BUTTERFLY,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "mapButterfly",
+  },
+  "Schermaus_Red": {
+    "speci": CardId.EUROPEAN_WATER_VOLE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "europeanWaterVole",
+  },
+  "Elster_Green": {
+    "speci": CardId.EURASIAN_MAGPIE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianMagpie",
+  },
+  "Fingerhut_LightGreen": {
+    "speci": CardId.DIGITALIS,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "digitalis",
+  },
+  "Elster_Blue": {
+    "speci": CardId.EURASIAN_MAGPIE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianMagpie",
+  },
+  "Brennnessel_Orange": {
+    "speci": CardId.URTICA,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.BOTTOM,
+    glCardName: "urtica",
+  },
+  "Elster_LightGreen": {
+    "speci": CardId.EURASIAN_MAGPIE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "eurasianMagpie",
+  },
+  "Gruenes-Heupferd_Green": {
+    "speci": CardId.GREAT_GREEN_BUSH_CRICKET,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "greatGreenBushCricket",
+  },
+  "Nachtigall_Green": {
+    "speci": CardId.COMMON_NIGHTINGALE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.TOP,
+    glCardName: "commonNightingale",
+  },
+  "Fingerhut_Red": {
+    "speci": CardId.DIGITALIS,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "digitalis",
+  },
+  "Nachtigall_Brown": {
+    "speci": CardId.COMMON_NIGHTINGALE,
+    "color": CardColor.OAK,
+    "position": CardPosition.TOP,
+    glCardName: "commonNightingale",
+  },
+  "Brennnessel_Red": {
+    "speci": CardId.URTICA,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.BOTTOM,
+    glCardName: "urtica",
+  },
+  "Nachtigall_Orange": {
+    "speci": CardId.COMMON_NIGHTINGALE,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.TOP,
+    glCardName: "commonNightingale",
+  },
+  "Schermaus_Green": {
+    "speci": CardId.EUROPEAN_WATER_VOLE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.BOTTOM,
+    glCardName: "europeanWaterVole",
+  },
+  "Schleiereule_LightGreen": {
+    "speci": CardId.BARN_OWL,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.TOP,
+    glCardName: "barnOwl",
+  },
+  "Fingerhut_Brown": {
+    "speci": CardId.DIGITALIS,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "digitalis",
+  },
+  "Schleiereule_Red": {
+    "speci": CardId.BARN_OWL,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.TOP,
+    glCardName: "barnOwl",
+  },
+  "Gruenes-Heupferd_Brown": {
+    "speci": CardId.GREAT_GREEN_BUSH_CRICKET,
+    "color": CardColor.OAK,
+    "position": CardPosition.BOTTOM,
+    glCardName: "greatGreenBushCricket",
+  },
+  "Bache_Left_LightGreen": {
+    "speci": CardId.WILD_BOAR_FEMALE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "wildBoarFemale",
+  },
+  "Bienenschwarm_Right_Red": {
+    "speci": CardId.BEEHIVE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "beehive",
+  },
+  "Wisent_Left_Brown": {
+    "speci": CardId.EUROPEAN_BISON,
+    "color": CardColor.OAK,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanBison",
+  },
+  "Bache_Right_Red": {
+    "speci": CardId.WILD_BOAR_FEMALE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "wildBoarFemale",
+  },
+  "Bache_Left_Blue": {
+    "speci": CardId.WILD_BOAR_FEMALE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "wildBoarFemale",
+  },
+  "Wildkatze_Right_Orange": {
+    "speci": CardId.EUROPEAN_WILDCAT,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanWildcat",
+  },
+  "Zwergfledermaus_Left_Yellow": {
+    "speci": CardId.COMMON_PIPISTRELLE,
+    "color": CardColor.LINDEN,
+    "position": CardPosition.LEFT,
+    glCardName: "commonPipistrelle",
+  },
+  "Frischling-Waldrand_Right_Blue": {
+    "speci": CardId.SQUEAKER_EDGE,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "squeakerEdge",
+  },
+  "Frischling-Waldrand_Left_Orange": {
+    "speci": CardId.SQUEAKER_EDGE,
+    "color": CardColor.HORSE_CHESTNUT,
+    "position": CardPosition.LEFT,
+    glCardName: "squeakerEdge",
+  },
+  "Schnake_Right_Green": {
+    "speci": CardId.MOSQUITO,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "mosquito",
+  },
+  "Waldiltis_Left_Blue": {
+    "speci": CardId.EUROPEAN_POLECAT,
+    "color": CardColor.SILVER_FIR,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanPolecat",
+  },
+  "Frischling-Waldrand_Right_Grey": {
+    "speci": CardId.SQUEAKER_EDGE,
+    "color": CardColor.DOUGLAS_FIR,
+    "position": CardPosition.RIGHT,
+    glCardName: "squeakerEdge",
+  },
+  "Bienenschwarm_Left_Green": {
+    "speci": CardId.BEEHIVE,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "beehive",
+  },
+  "Zwergfledermaus_Right_Red": {
+    "speci": CardId.COMMON_PIPISTRELLE,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "commonPipistrelle",
+  },
+  "Wildkatze_Left_Brown": {
+    "speci": CardId.EUROPEAN_WILDCAT,
+    "color": CardColor.OAK,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanWildcat",
+  },
+  "Bienenschwarm_Right_LightGreen": {
+    "speci": CardId.BEEHIVE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.RIGHT,
+    glCardName: "beehive",
+  },
+  "Zwergfledermaus_Left_LightGreen": {
+    "speci": CardId.COMMON_PIPISTRELLE,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "commonPipistrelle",
+  },
+  "Wisent_Right_Green": {
+    "speci": CardId.EUROPEAN_BISON,
+    "color": CardColor.BEECH,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanBison",
+  },
+  "Wisent_Left_Green": {
+    "speci": CardId.EUROPEAN_BISON,
+    "color": CardColor.BEECH,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanBison",
+  },
+  "Waldiltis_Right_Red": {
+    "speci": CardId.EUROPEAN_POLECAT,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanPolecat",
+  },
+  "Schnake_Left_LightGreen": {
+    "speci": CardId.MOSQUITO,
+    "color": CardColor.BIRCH,
+    "position": CardPosition.LEFT,
+    glCardName: "mosquito",
+  },
+  "Waldiltis_Right_Brown": {
+    "speci": CardId.EUROPEAN_POLECAT,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "europeanPolecat",
+  },
+  "Wildkatze_Left_Red": {
+    "speci": CardId.EUROPEAN_WILDCAT,
+    "color": CardColor.SYCAMORE,
+    "position": CardPosition.LEFT,
+    glCardName: "europeanWildcat",
+  },
+  "Schnake_Right_Brown": {
+    "speci": CardId.MOSQUITO,
+    "color": CardColor.OAK,
+    "position": CardPosition.RIGHT,
+    glCardName: "mosquito",
+  }
 }

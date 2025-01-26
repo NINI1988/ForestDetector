@@ -2,7 +2,7 @@
 
 import { Prediction, PredictionResult } from "./prediction-result";
 import { cards } from "./cards";
-import { Forest, ForestCard } from "./forest";
+import { ForestCard } from "./forest";
 import { CardPosition } from "./card-position";
 import { Card } from "./card";
 
@@ -105,9 +105,9 @@ export class ForestAssembler
     return nearestCard!;
   }
 
-  static assembleForest(predictionResult: PredictionResult): Forest
+  static assembleForest(predictionResult: PredictionResult): ForestCard[]
   {
-    const forest = new Forest()
+    const forestCards: ForestCard[] = []
 
     let predictionCards: PredictionCard[] = []
 
@@ -153,9 +153,9 @@ export class ForestAssembler
         color: card.color,
         baseIndex: card.baseIndex,
       };
-      forest.addCard(forestCard);
+      forestCards.push(forestCard);
     }
 
-    return forest;
+    return forestCards;
   }
 }
