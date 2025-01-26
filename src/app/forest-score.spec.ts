@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { ForestAssembler } from '../model/forest-assembler';
-import * as predictionResult238Points from '../../test_data/responses/238Points.json';
-import * as predictionResult161Points from '../../test_data/responses/161Points.json';
+import { Forest } from '../model/forest';
 
-describe('ForestAssembler', () =>
+describe('ForestScore', () =>
 {
 
   beforeEach(() =>
@@ -11,12 +9,10 @@ describe('ForestAssembler', () =>
     TestBed.configureTestingModule({});
   });
 
-  it('should load 238Points.json and validate output of assembleForest', () =>
+  it('should calculate the score of 238 points', () =>
   {
 
-    const forestCards = ForestAssembler.assembleForest(predictionResult238Points);
-
-    const expectedCards = [
+    const forestCards = [
       {
         id: "Buche",
         color: "Green",
@@ -184,16 +180,25 @@ describe('ForestAssembler', () =>
       },
     ]
 
-    expect(forestCards).toEqual(expectedCards);
+    const allForests: Forest[] = []
+    const forest = new Forest("Player1", allForests)
+    allForests.push(forest)
+
+    forest.setCards(forestCards)
+    forest.caveCount = 0
+
+    forest.updatePoints()
+
+    const points = forest.points
+
+    expect(points).toEqual(238);
 
   });
 
-  it('should load 161Points.json and validate output of assembleForest', () =>
+  it('should calculate the score of 161 points', () =>
   {
 
-    const forestCards = ForestAssembler.assembleForest(predictionResult161Points);
-
-    const expectedCards = [
+    const forestCards = [
       {
         id: "Kastanie",
         color: "Orange",
@@ -341,7 +346,18 @@ describe('ForestAssembler', () =>
       },
     ]
 
-    expect(forestCards).toEqual(expectedCards);
+    const allForests: Forest[] = []
+    const forest = new Forest("Player1", allForests)
+    allForests.push(forest)
+
+    forest.setCards(forestCards)
+    forest.caveCount = 0
+
+    forest.updatePoints()
+
+    const points = forest.points
+
+    expect(points).toEqual(161);
 
   });
 });
