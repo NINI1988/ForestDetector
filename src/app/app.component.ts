@@ -29,6 +29,7 @@ export class AppComponent
   allForests: Forest[] = [];
 
   isLoading = false;
+  uploadData = true;
 
   constructor(private imageAnnotator: ImageAnnotatorService) { }
 

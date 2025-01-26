@@ -7,3 +7,20 @@
 button {
   margin-right: 1rem;
 }
+
+.point-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #1d931d;
+}
+
+.points img, img.icon {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.points td div {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}

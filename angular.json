@@ -24,6 +24,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/third_party/glaures_forestshuffle/public/img",
+                "output": "glImg"
               }
             ],
             "styles": [
