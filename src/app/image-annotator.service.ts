@@ -46,7 +46,7 @@ export class ImageAnnotatorService
     }
 
     const url = 'https://detect.roboflow.com/forestdetector/15';
-    const params = new HttpParams().set('api_key', api_key).set('confidence', 50).set('overlap', 50)
+    const params = new HttpParams().set('api_key', api_key).set('confidence', 70).set('overlap', 50)
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
