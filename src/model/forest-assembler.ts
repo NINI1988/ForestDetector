@@ -77,6 +77,9 @@ export class ForestAssembler
     {
       if (otherCard === card) continue;
 
+      // Cards can only be closest to cards of position BASE or to the same position card.
+      if (![CardPosition.BASE, card.position].includes(otherCard.position)) continue;
+
       switch (card.position)
       {
         case CardPosition.LEFT:
