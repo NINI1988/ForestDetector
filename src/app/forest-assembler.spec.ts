@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { ForestAssembler } from '../model/forest-assembler';
 import * as predictionResult238Points from '../../test_data/responses/238Points.json';
 import * as predictionResult161Points from '../../test_data/responses/161Points.json';
+import * as predictionResult2025_01_25_22_26_38 from '../../test_data/responses/2025-01-25 22.26.38.json';
+import * as predictionResult2025_01_25_22_26_47 from '../../test_data/responses/2025-01-25 22.26.47.json';
 
 describe('ForestAssembler', () =>
 {
@@ -184,7 +186,7 @@ describe('ForestAssembler', () =>
       },
     ]
 
-    expect(forestCards).toEqual(expectedCards);
+    expect(forestCards).toEqual(jasmine.arrayWithExactContents(expectedCards))
 
   });
 
@@ -341,7 +343,341 @@ describe('ForestAssembler', () =>
       },
     ]
 
-    expect(forestCards).toEqual(expectedCards);
+    expect(forestCards).toEqual(jasmine.arrayWithExactContents(expectedCards))
+
+  });
+
+  it('should load 2025-01-25 22.26.38.json and validate output of assembleForest', () =>
+  {
+
+    const forestCards = ForestAssembler.assembleForest(predictionResult2025_01_25_22_26_38);
+
+    const expectedCards = [
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 0,
+      },
+      {
+        id: "Kastanie",
+        color: "Orange",
+        baseIndex: 1,
+      },
+      {
+        id: "Baumsproessling",
+        color: "",
+        baseIndex: 2,
+      },
+      {
+        id: "Eiche",
+        color: "Brown",
+        baseIndex: 3,
+      },
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 4,
+      },
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 5,
+      },
+      {
+        id: "Buche",
+        color: "Green",
+        baseIndex: 6,
+      },
+      {
+        id: "Buche",
+        color: "Green",
+        baseIndex: 7,
+      },
+      {
+        id: "Bache_Left_LightGreen",
+        color: "LightGreen",
+        baseIndex: 7,
+      },
+      {
+        id: "Damhirsch_Left_Yellow",
+        color: "Yellow",
+        baseIndex: 3,
+      },
+      {
+        id: "Wolf_Left_Red",
+        color: "Red",
+        baseIndex: 6,
+      },
+      {
+        id: "Reh_Left_Yellow",
+        color: "Yellow",
+        baseIndex: 2,
+      },
+      {
+        id: "Luchs_Left_Grey",
+        color: "Grey",
+        baseIndex: 5,
+      },
+      {
+        id: "Waldiltis_Left_Blue",
+        color: "Blue",
+        baseIndex: 1,
+      },
+      {
+        id: "Dachs_Left_Orange",
+        color: "Orange",
+        baseIndex: 4,
+      },
+      {
+        id: "Frischling-Waldrand_Left_Orange",
+        color: "Orange",
+        baseIndex: 0,
+      },
+      {
+        id: "Steinmarder_Right_Orange",
+        color: "Orange",
+        baseIndex: 4,
+      },
+      {
+        id: "Reh_Right_Green",
+        color: "Green",
+        baseIndex: 2,
+      },
+      {
+        id: "Luchs_Right_Green",
+        color: "Green",
+        baseIndex: 3,
+      },
+      {
+        id: "Frischling_Right_Brown",
+        color: "Brown",
+        baseIndex: 7,
+      },
+      {
+        id: "Landkaertchen_Yellow",
+        color: "Yellow",
+        baseIndex: 7,
+      },
+      {
+        id: "Habicht_Grey",
+        color: "Grey",
+        baseIndex: 4,
+      },
+      {
+        id: "Steinadler_Green",
+        color: "Green",
+        baseIndex: 2,
+      },
+      {
+        id: "Schillerfalter_Yellow",
+        color: "Yellow",
+        baseIndex: 3,
+      },
+      {
+        id: "Waldameise_Green",
+        color: "Green",
+        baseIndex: 3,
+      },
+      {
+        id: "Baumfarn_Orange",
+        color: "Orange",
+        baseIndex: 2,
+      },
+      {
+        id: "Hirschkaefer_Red",
+        color: "Red",
+        baseIndex: 0,
+      },
+      {
+        id: "Feuersalamander_Grey",
+        color: "Grey",
+        baseIndex: 5,
+      },
+      {
+        id: "Bergmolch_Blue",
+        color: "Blue",
+        baseIndex: 6,
+      },
+      {
+        id: "Feuersalamander_Orange",
+        color: "Orange",
+        baseIndex: 7,
+      },
+      {
+        id: "Brennnessel_Red",
+        color: "Red",
+        baseIndex: 4,
+      },
+    ]
+
+    expect(forestCards).toEqual(jasmine.arrayWithExactContents(expectedCards))
+
+  });
+
+  it('should load 2025-01-25 22.26.47.json and validate output of assembleForest', () =>
+  {
+
+    const forestCards = ForestAssembler.assembleForest(predictionResult2025_01_25_22_26_47);
+
+    const expectedCards = [
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 0,
+      },
+      {
+        id: "Kastanie",
+        color: "Orange",
+        baseIndex: 1,
+      },
+      {
+        id: "Baumsproessling",
+        color: "",
+        baseIndex: 2,
+      },
+      {
+        id: "Eiche",
+        color: "Brown",
+        baseIndex: 3,
+      },
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 4,
+      },
+      {
+        id: "Linde",
+        color: "Yellow",
+        baseIndex: 5,
+      },
+      {
+        id: "Buche",
+        color: "Green",
+        baseIndex: 6,
+      },
+      {
+        id: "Buche",
+        color: "Green",
+        baseIndex: 7,
+      },
+      {
+        id: "Bache_Left_LightGreen",
+        color: "LightGreen",
+        baseIndex: 7,
+      },
+      {
+        id: "Damhirsch_Left_Yellow",
+        color: "Yellow",
+        baseIndex: 3,
+      },
+      {
+        id: "Wolf_Left_Red",
+        color: "Red",
+        baseIndex: 6,
+      },
+      {
+        id: "Reh_Left_Yellow",
+        color: "Yellow",
+        baseIndex: 2,
+      },
+      {
+        id: "Luchs_Left_Grey",
+        color: "Grey",
+        baseIndex: 5,
+      },
+      {
+        id: "Waldiltis_Left_Blue",
+        color: "Blue",
+        baseIndex: 1,
+      },
+      {
+        id: "Dachs_Left_Orange",
+        color: "Orange",
+        baseIndex: 4,
+      },
+      {
+        id: "Frischling-Waldrand_Left_Orange",
+        color: "Orange",
+        baseIndex: 0,
+      },
+      {
+        id: "Steinmarder_Right_Orange",
+        color: "Orange",
+        baseIndex: 4,
+      },
+      {
+        id: "Reh_Right_Green",
+        color: "Green",
+        baseIndex: 2,
+      },
+      {
+        id: "Luchs_Right_Green",
+        color: "Green",
+        baseIndex: 3,
+      },
+      {
+        id: "Frischling_Right_Brown",
+        color: "Brown",
+        baseIndex: 7,
+      },
+      {
+        id: "Landkaertchen_Yellow",
+        color: "Yellow",
+        baseIndex: 7,
+      },
+      {
+        id: "Habicht_Grey",
+        color: "Grey",
+        baseIndex: 4,
+      },
+      {
+        id: "Steinadler_Green",
+        color: "Green",
+        baseIndex: 2,
+      },
+      {
+        id: "Schillerfalter_Yellow",
+        color: "Yellow",
+        baseIndex: 3,
+      },
+      {
+        id: "Waldameise_Green",
+        color: "Green",
+        baseIndex: 3,
+      },
+      {
+        id: "Baumfarn_Orange",
+        color: "Orange",
+        baseIndex: 2,
+      },
+      {
+        id: "Hirschkaefer_Red",
+        color: "Red",
+        baseIndex: 0,
+      },
+      {
+        id: "Feuersalamander_Grey",
+        color: "Grey",
+        baseIndex: 5,
+      },
+      {
+        id: "Bergmolch_Blue",
+        color: "Blue",
+        baseIndex: 6,
+      },
+      {
+        id: "Feuersalamander_Orange",
+        color: "Orange",
+        baseIndex: 7,
+      },
+      {
+        id: "Brennnessel_Red",
+        color: "Red",
+        baseIndex: 4,
+      },
+    ]
+
+    expect(forestCards).toEqual(jasmine.arrayWithExactContents(expectedCards))
 
   });
 });

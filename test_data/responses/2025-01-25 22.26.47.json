@@ -1,0 +1,320 @@
+{
+  "inference_id": "92431bdd-d5e6-4f92-991a-9eb388bc5f86",
+  "time": 0.22307708200060006,
+  "image": {
+    "width": 4032,
+    "height": 2268
+  },
+  "predictions": [
+    {
+      "x": 1269.0,
+      "y": 1300.0,
+      "width": 342.0,
+      "height": 484.0,
+      "confidence": 0.9688184857368469,
+      "class": "Linde",
+      "class_id": 162,
+      "detection_id": "453476ca-dbfd-4671-8db9-7da22f9b8c85"
+    },
+    {
+      "x": 1745.5,
+      "y": 1656.5,
+      "width": 327.0,
+      "height": 237.0,
+      "confidence": 0.9686680436134338,
+      "class": "Bergmolch_Blue",
+      "class_id": 29,
+      "detection_id": "33bad6ca-81de-4b48-911b-7fd57db87d4b"
+    },
+    {
+      "x": 690.0,
+      "y": 1361.5,
+      "width": 318.0,
+      "height": 485.0,
+      "confidence": 0.966613233089447,
+      "class": "Linde",
+      "class_id": 162,
+      "detection_id": "4b36ac69-a057-46f8-958f-5a5b13d50297"
+    },
+    {
+      "x": 1301.0,
+      "y": 221.0,
+      "width": 298.0,
+      "height": 228.0,
+      "confidence": 0.9661920666694641,
+      "class": "Steinadler_Green",
+      "class_id": 216,
+      "detection_id": "a9f1027a-82c9-44fc-bb81-a508a0343ead"
+    },
+    {
+      "x": 384.0,
+      "y": 1026.5,
+      "width": 298.0,
+      "height": 255.0,
+      "confidence": 0.9653227925300598,
+      "class": "Hirschkaefer_Red",
+      "class_id": 138,
+      "detection_id": "606d74e6-e7c3-48db-810c-597b9fbd2cc3"
+    },
+    {
+      "x": 2270.0,
+      "y": 1320.0,
+      "width": 364.0,
+      "height": 500.0,
+      "confidence": 0.9619652032852173,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "0c875835-c8fb-4ef2-800b-3710fcc3fba6"
+    },
+    {
+      "x": 877.5,
+      "y": 608.5,
+      "width": 315.0,
+      "height": 439.0,
+      "confidence": 0.96144038438797,
+      "class": "Kastanie",
+      "class_id": 153,
+      "detection_id": "aacc56cf-0375-4857-8e98-14ad92660f2b"
+    },
+    {
+      "x": 374.0,
+      "y": 694.5,
+      "width": 300.0,
+      "height": 433.0,
+      "confidence": 0.960321307182312,
+      "class": "Linde",
+      "class_id": 162,
+      "detection_id": "40a8fd4e-8688-4474-8023-cc3407417779"
+    },
+    {
+      "x": 1316.0,
+      "y": 536.0,
+      "width": 326.0,
+      "height": 440.0,
+      "confidence": 0.9600188732147217,
+      "class": "Baumsproessling",
+      "class_id": 25,
+      "detection_id": "afed89c0-435b-4e4b-a510-529be6a324ff"
+    },
+    {
+      "x": 1275.5,
+      "y": 1665.5,
+      "width": 321.0,
+      "height": 251.0,
+      "confidence": 0.9584356546401978,
+      "class": "Feuersalamander_Grey",
+      "class_id": 91,
+      "detection_id": "1d774039-941a-4f28-8d1d-af9f1cb988f2"
+    },
+    {
+      "x": 1745.5,
+      "y": 1299.5,
+      "width": 339.0,
+      "height": 489.0,
+      "confidence": 0.9568792581558228,
+      "class": "Buche",
+      "class_id": 47,
+      "detection_id": "f4493424-6b6a-4603-99c6-888d3bb5a91c"
+    },
+    {
+      "x": 1931.0,
+      "y": 152.0,
+      "width": 310.0,
+      "height": 220.0,
+      "confidence": 0.9557207226753235,
+      "class": "Schillerfalter_Yellow",
+      "class_id": 195,
+      "detection_id": "c1bc4bc7-6aca-4e64-a36b-a55a7f91bfb8"
+    },
+    {
+      "x": 1965.0,
+      "y": 468.0,
+      "width": 342.0,
+      "height": 460.0,
+      "confidence": 0.9555250406265259,
+      "class": "Eiche",
+      "class_id": 61,
+      "detection_id": "27f664ce-e89a-4b16-b3b9-73eda680d9b0"
+    },
+    {
+      "x": 2276.0,
+      "y": 1688.5,
+      "width": 340.0,
+      "height": 249.0,
+      "confidence": 0.9542384147644043,
+      "class": "Feuersalamander_Orange",
+      "class_id": 92,
+      "detection_id": "561cdfa0-2c8d-47af-a2eb-3f9f01ef04b5"
+    },
+    {
+      "x": 1329.0,
+      "y": 866.5,
+      "width": 304.0,
+      "height": 243.0,
+      "confidence": 0.9540905952453613,
+      "class": "Baumfarn_Orange",
+      "class_id": 23,
+      "detection_id": "e60082d7-6481-425f-9e60-f96647e8e49f"
+    },
+    {
+      "x": 698.0,
+      "y": 1721.5,
+      "width": 308.0,
+      "height": 257.0,
+      "confidence": 0.9532228112220764,
+      "class": "Brennnessel_Red",
+      "class_id": 43,
+      "detection_id": "0a42f6fb-8d1c-4def-adfc-cb95b8e3c169"
+    },
+    {
+      "x": 679.0,
+      "y": 627.0,
+      "width": 172.0,
+      "height": 432.0,
+      "confidence": 0.9517584443092346,
+      "class": "Waldiltis_Left_Blue",
+      "class_id": 240,
+      "detection_id": "1d0571cd-41db-43f4-bdc8-2e0581446051"
+    },
+    {
+      "x": 2186.5,
+      "y": 444.0,
+      "width": 207.0,
+      "height": 462.0,
+      "confidence": 0.9468152523040771,
+      "class": "Luchs_Right_Green",
+      "class_id": 166,
+      "detection_id": "172c454f-234b-4a1c-a8ef-9885fb97f300"
+    },
+    {
+      "x": 2256.0,
+      "y": 964.0,
+      "width": 322.0,
+      "height": 228.0,
+      "confidence": 0.9466083645820618,
+      "class": "Landkaertchen_Yellow",
+      "class_id": 159,
+      "detection_id": "9394bd42-8726-4530-9b36-951ace3ef972"
+    },
+    {
+      "x": 2504.0,
+      "y": 1317.5,
+      "width": 206.0,
+      "height": 505.0,
+      "confidence": 0.9440935850143433,
+      "class": "Frischling_Right_Brown",
+      "class_id": 105,
+      "detection_id": "a8412693-b035-4291-a9b2-612a6f4edc17"
+    },
+    {
+      "x": 2034.0,
+      "y": 1329.5,
+      "width": 210.0,
+      "height": 491.0,
+      "confidence": 0.9416228532791138,
+      "class": "Bache_Left_LightGreen",
+      "class_id": 17,
+      "detection_id": "6c2bed75-97cd-4c7a-b3d3-66933ef90533"
+    },
+    {
+      "x": 1740.0,
+      "y": 487.5,
+      "width": 194.0,
+      "height": 445.0,
+      "confidence": 0.940979540348053,
+      "class": "Damhirsch_Left_Yellow",
+      "class_id": 55,
+      "detection_id": "27c122b9-ca8c-4bd3-b7da-d6c0f389958f"
+    },
+    {
+      "x": 1519.0,
+      "y": 526.5,
+      "width": 180.0,
+      "height": 445.0,
+      "confidence": 0.9399463534355164,
+      "class": "Reh_Right_Green",
+      "class_id": 184,
+      "detection_id": "e2b319fa-beb9-4454-83f7-e7865c44679d"
+    },
+    {
+      "x": 898.0,
+      "y": 1366.5,
+      "width": 176.0,
+      "height": 473.0,
+      "confidence": 0.937728226184845,
+      "class": "Steinmarder_Right_Orange",
+      "class_id": 224,
+      "detection_id": "472f7889-7628-4727-b694-a7e74dacccca"
+    },
+    {
+      "x": 485.0,
+      "y": 1392.0,
+      "width": 190.0,
+      "height": 476.0,
+      "confidence": 0.936776876449585,
+      "class": "Dachs_Left_Orange",
+      "class_id": 53,
+      "detection_id": "d3db4809-4773-41ef-994a-0e58354dcd9f"
+    },
+    {
+      "x": 1100.5,
+      "y": 561.5,
+      "width": 191.0,
+      "height": 435.0,
+      "confidence": 0.9363073706626892,
+      "class": "Reh_Left_Yellow",
+      "class_id": 183,
+      "detection_id": "f50577be-8665-4af3-b084-1f83721a954f"
+    },
+    {
+      "x": 1048.5,
+      "y": 1314.0,
+      "width": 181.0,
+      "height": 472.0,
+      "confidence": 0.932660698890686,
+      "class": "Luchs_Left_Grey",
+      "class_id": 163,
+      "detection_id": "ccf26fa7-b85a-4beb-a970-27ef4cb47f57"
+    },
+    {
+      "x": 680.5,
+      "y": 1016.0,
+      "width": 293.0,
+      "height": 234.0,
+      "confidence": 0.9292386174201965,
+      "class": "Habicht_Grey",
+      "class_id": 128,
+      "detection_id": "3c6e0ec0-2425-47af-83be-9adc23651ff8"
+    },
+    {
+      "x": 1514.0,
+      "y": 1298.5,
+      "width": 194.0,
+      "height": 477.0,
+      "confidence": 0.9087590575218201,
+      "class": "Wolf_Left_Red",
+      "class_id": 261,
+      "detection_id": "1ea8159f-1f38-49b9-90d6-b3530acce091"
+    },
+    {
+      "x": 1975.0,
+      "y": 813.0,
+      "width": 318.0,
+      "height": 256.0,
+      "confidence": 0.9054905772209167,
+      "class": "Waldameise_Green",
+      "class_id": 236,
+      "detection_id": "7830c047-8f18-4ca7-a991-5b364426a9cc"
+    },
+    {
+      "x": 179.0,
+      "y": 729.0,
+      "width": 180.0,
+      "height": 434.0,
+      "confidence": 0.8506038784980774,
+      "class": "Frischling-Waldrand_Left_Orange",
+      "class_id": 100,
+      "detection_id": "f6b475be-bb56-4d41-9458-c400f061bc21"
+    }
+  ]
+}
