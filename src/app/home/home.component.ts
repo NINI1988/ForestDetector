@@ -7,6 +7,7 @@ import { ImageAnnotatorService } from '../image-annotator.service';
 import { PlayerService } from '../player.service';
 import { ForestAssembler } from '../../model/forest-assembler';
 import { Forest } from '../../model/forest';
+import { PredictionResult } from '../../model/prediction-result';
 
 @Component({
   selector: 'app-home',
@@ -37,10 +38,25 @@ export class HomeComponent
     if (file)
     {
       const reader = new FileReader();
-      reader.onload = (e: any) =>
+      reader.onload = async (e: any) =>
       {
         // Store the base64 image data in the player
         this.playerService.updatePlayerBoardGame(index, e.target.result);
+
+        console.log('Image:', e.target.result);
+
+        // Directly call the annotation service
+        try
+        {
+          // await new Promise(resolve => setTimeout(resolve, 1000));
+          // this.playerService.players[index].annotations = <PredictionResult>{}
+
+          const predictionResult = await lastValueFrom(this.imageAnnotator.annotate(e.target.result));
+          this.playerService.players[index].annotations = predictionResult;
+        } catch (error)
+        {
+          console.error('Error annotating image:', error);
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -101,10 +117,5 @@ export class HomeComponent
       this.isLoading = false;
     }
 
-  }
-
-  editPlayer(playerNumber: number)
-  {
-    this.router.navigate([`/edit/${playerNumber}`]);
   }
 }

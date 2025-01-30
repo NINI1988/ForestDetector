@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../model/player';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class PlayerService
   constructor()
   {
     this.initializePlayers(this.PLAYER_COUNT);
+    this.players[0].boardGame = environment.image_player1;
+    this.players[0].annotations = environment.annotation_player1;
   }
 
   initializePlayers(count: number)
