@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
@@ -7,25 +7,40 @@ import { ImageAnnotatorService } from '../image-annotator.service';
 import { PlayerService } from '../player.service';
 import { ForestAssembler } from '../../model/forest-assembler';
 import { Forest } from '../../model/forest';
-import { PredictionResult } from '../../model/prediction-result';
+import { HeaderService, NavButton } from '../header.service';
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule, RouterLink, RouterModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent
+export class HomeComponent implements OnInit
 {
   allForests: Forest[] = [];
 
   isLoading = false;
   uploadData = true;
 
-  constructor(private imageAnnotator: ImageAnnotatorService, private router: Router, public playerService: PlayerService) { }
+  constructor(private imageAnnotator: ImageAnnotatorService, private router: Router, public playerService: PlayerService, private headerService: HeaderService) { }
 
-  ngOnInit()
+  ngOnInit(): void
   {
+    this.headerService.setButtons([
+      {
+        label: '',
+        icon: 'bi-question-circle',
+        class: 'btn-primary',
+        action: this.showHelp,
+        visible: true
+      }
+    ]);
+  }
+
+  showHelp(button: NavButton)
+  {
+    alert('Help dialog opened');
+    // Implement help functionality
   }
 
   /**

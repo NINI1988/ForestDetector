@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PlayerService } from '../player.service';
 import { Player } from '../../model/player';
 import * as fabric from 'fabric';
+import { HeaderService, NavButton } from '../header.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-annotation-editor',
@@ -13,18 +15,32 @@ import * as fabric from 'fabric';
 export class AnnotationEditorComponent implements OnInit, AfterViewInit
 {
   player: Player | undefined;
-  canvas: fabric.Canvas | undefined
+  canvas: fabric.Canvas | undefined;
 
   @Input() set playerNumber(playerNumber: number)
   {
     this.player = this.playerService.getPlayer(playerNumber);
   }
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private headerService: HeaderService, private router: Router) { }
 
   ngOnInit(): void
   {
-    console.log(this.player?.annotations)
+    console.log(this.player?.annotations);
+    this.headerService.setButtons([
+      {
+        label: 'Cancel',
+        class: 'btn-secondary',
+        action: this.cancelEdit.bind(this),
+        visible: true
+      },
+      {
+        label: 'Save',
+        class: 'btn-primary',
+        action: this.saveEdit.bind(this),
+        visible: true
+      }
+    ]);
   }
 
   ngAfterViewInit(): void
@@ -102,4 +118,12 @@ export class AnnotationEditorComponent implements OnInit, AfterViewInit
 
   }
 
+  saveEdit(button: NavButton)
+  {
+  }
+
+  cancelEdit(button: NavButton)
+  {
+    this.router.navigate(['/']);
+  }
 }
