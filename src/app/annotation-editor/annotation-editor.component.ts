@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayerService } from '../player.service';
 import { Player } from '../../model/player';
 import * as fabric from 'fabric';
 import { HeaderService, NavButton } from '../header.service';
 import { Router } from '@angular/router';
+import { Prediction } from '../../model/prediction-result';
 
 @Component({
   selector: 'app-annotation-editor',
@@ -12,10 +13,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./annotation-editor.component.css'],
   imports: [CommonModule]
 })
-export class AnnotationEditorComponent implements OnInit, AfterViewInit
+export class AnnotationEditorComponent implements OnInit
 {
   player: Player | undefined;
   canvas: fabric.Canvas | undefined;
+
+  currentPredictions: Prediction[] = [];
+
+  currentWidth: number = 0
+  currentHeight: number = 0
 
   @Input() set playerNumber(playerNumber: number)
   {
@@ -41,23 +47,87 @@ export class AnnotationEditorComponent implements OnInit, AfterViewInit
         visible: true
       }
     ]);
+
+    this.initCanvas();
+    this.updateCanvas();
   }
 
-  ngAfterViewInit(): void
+  @HostListener('window:resize')
+  onResize()
+  {
+    this.updateCanvas()
+  }
+
+  initCanvas(): void
   {
     if (!this.player?.boardGame || !this.player?.annotations?.predictions)
     {
-      console.error("Missing image or annotations:", this.player?.boardGame, this.player?.annotations?.predictions)
-      throw new Error("Missing image or annotations:");
+      console.error("Init: Missing image or annotations:", this.player?.boardGame, this.player?.annotations?.predictions)
+      throw new Error("Init: Missing image or annotations:");
     }
 
     const img = new Image();
     img.src = this.player.boardGame;
 
+    const canvas = new fabric.Canvas('annotationCanvas',
+      {
+        selection: false, // disable group selection for simplicity
+        allowTouchScrolling: true,
+        skipOffscreen: false
+      }
+    );
+
+    const fabricImg = new fabric.FabricImage(img, {
+      originX: "left",
+      originY: "top",
+    })
+
+    canvas.backgroundImage = fabricImg;
+
+    this.currentPredictions = this.player?.annotations?.predictions
+
+    this.canvas = canvas
+
+  }
+
+  updateCanvas(): void
+  {
+    if (!this.player?.boardGame || !this.player?.annotations?.predictions || !this.canvas || !this.canvas.backgroundImage)
+    {
+      console.error("Update: Missing image or annotations:", this.player?.boardGame, this.player?.annotations?.predictions, this.canvas, this.canvas?.backgroundImage)
+      throw new Error("Update: Missing image or annotations:");
+    }
+
+    const canvasElement = this.canvas?.getElement() as HTMLCanvasElement;
+    if (!canvasElement)
+    {
+      console.error("Canvas element not found");
+      return;
+    }
+
+    // Prevent redrawing when mobile chrome adressbar gets visible
+    let width = document.documentElement.clientWidth
+    let height = document.documentElement.clientHeight
+    if (Math.trunc(this.currentWidth) == Math.trunc(width) && Math.trunc(this.currentHeight) == Math.trunc(height))
+    {
+      return
+    }
+
+    this.currentWidth = width
+    this.currentHeight = height
+
+
+    const img = new Image();
+    img.src = this.player.boardGame;
+
+    width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     const aspectRatio = img.width / img.height;
-    let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    let height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    console.log("PageSize", width, height)
+
+    const navBarHeight = document.getElementById("navBar")?.offsetHeight || 0;
+    console.log("PageSize", width, height, navBarHeight);
+
+    height -= navBarHeight;
 
     if (width / aspectRatio > height)
     {
@@ -70,32 +140,17 @@ export class AnnotationEditorComponent implements OnInit, AfterViewInit
     const scaleX = width / img.width
     const scaleY = height / img.height
 
+    this.canvas.backgroundImage.scaleX = scaleX
+    this.canvas.backgroundImage.scaleY = scaleY
 
-    img.onload = () =>
-    {
+    this.canvas.width = width
+    this.canvas.height = height
 
-      const fabricImg = new fabric.FabricImage(img, {
-        originX: "left",
-        originY: "top",
-        scaleX: scaleX,
-        scaleY: scaleY,
-      })
+    this.canvas.remove(...this.canvas.getObjects());
 
-      canvas.backgroundImage = fabricImg;
-      canvas.renderAll();
-    };
+    this.canvas.setDimensions({ width: width, height: height });
 
-    const canvas = new fabric.Canvas('annotationCanvas',
-      {
-        selection: false, // disable group selection for simplicity
-        width: width,
-        height: height,
-        allowTouchScrolling: true,
-        skipOffscreen: false
-      }
-    );
-
-    this.player?.annotations?.predictions?.forEach(prediction =>
+    for (const prediction of this.currentPredictions)
     {
       let rect = new fabric.Rect({
         left: (prediction.x - prediction.width / 2) * scaleX,
@@ -112,9 +167,8 @@ export class AnnotationEditorComponent implements OnInit, AfterViewInit
       //   mtr: new fabric.Control({ visible: false })
       // }
 
-      canvas.add(rect);
-    });
-    this.canvas = canvas
+      this.canvas.add(rect);
+    }
 
   }
 

@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit
   showHelp(button: NavButton)
   {
     alert('Help dialog opened');
-    // Implement help functionality
   }
 
   /**
