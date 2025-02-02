@@ -83,32 +83,42 @@ export class HomeComponent implements OnInit
   {
     this.allForests.length = 0; // clear all forests
 
-    this.isLoading = true;
-    const players = this.playerService.players
-    console.log('Submitted data:', players);
-
-    for (const [playerIndex, player] of players.entries())
+    try
     {
-      if (player.annotations)
+      this.isLoading = true;
+      const players = this.playerService.players
+      console.log('Submitted data:', players);
+
+      for (const [playerIndex, player] of players.entries())
       {
-        const playerName = player.name || `Player${playerIndex + 1}`
+        if (player.annotations)
+        {
+          const playerName = player.name || `Player${playerIndex + 1}`
 
-        const forest = new Forest(playerName, this.allForests)
-        this.allForests.push(forest)
+          const forest = new Forest(playerName, this.allForests)
+          this.allForests.push(forest)
 
-        const forestCards = ForestAssembler.assembleForest(player.annotations);
+          const forestCards = ForestAssembler.assembleForest(player.annotations);
 
-        forest.setCards(forestCards)
-        forest.caveCount = player.cardsInCave
+          forest.setCards(forestCards)
+          forest.caveCount = player.cardsInCave
+        }
+      }
+
+      for (const forest of this.allForests)
+      {
+        forest.updatePoints()
       }
     }
-
-    for (const forest of this.allForests)
+    catch (error)
     {
-      forest.updatePoints()
+      alert(error);
+    }
+    finally
+    {
+      this.isLoading = false;
     }
 
-    this.isLoading = false;
   }
 
 }
