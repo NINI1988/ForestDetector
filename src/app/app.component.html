@@ -1,12 +1,15 @@
+
 <nav id="navBar" class="navbar navbar-expand-lg navbar-light bg-success">
-  <div class="ms-auto">
-    <ng-container *ngFor="let button of (headerService.buttons$ | async)">
-      <button *ngIf="button.visible" class="btn btn-outline-dark me-4" [ngClass]="button.class"
-        (click)="button.action(button)">
-        <i *ngIf="button.icon" class="bi" [ngClass]="button.icon"></i>
-        {{ button.label }}
-      </button>
-    </ng-container>
+  <div class="container container-fluid">
+    <div class="ms-auto">
+      <ng-container *ngFor="let button of (headerService.buttons$ | async)">
+        <button class="btn btn-outline-dark me-4" [style.visibility]="button.visible ? 'visible' : 'hidden'" [ngClass]="button.class"
+          (click)="button.action(button)">
+          <i *ngIf="button.icon" class="bi" [ngClass]="button.icon"></i>
+          {{ button.label }}
+        </button>
+      </ng-container>
+    </div>
   </div>
 </nav>
 
