@@ -84,52 +84,31 @@ export class HomeComponent implements OnInit
     this.allForests.length = 0; // clear all forests
 
     this.isLoading = true;
-    console.log('Submitted data:', this.playerService.players);
+    const players = this.playerService.players
+    console.log('Submitted data:', players);
 
-    const annotationPromises = this.playerService.players.map(player =>
-      player.boardGame
-        ? lastValueFrom(this.imageAnnotator.annotate(player.boardGame))
-        : Promise.resolve(null)
-    );
-
-    try
+    for (const [playerIndex, player] of players.entries())
     {
-      const predictionResults = await Promise.all(annotationPromises);
-
-      predictionResults.forEach((predictionResult, index) =>
+      if (player.annotations)
       {
-        if (predictionResult != null)
-        {
-          let player = this.playerService.players[index]
+        const playerName = player.name || `Player${playerIndex + 1}`
 
-          const playerName = player.name || `Player${index + 1}`
+        const forest = new Forest(playerName, this.allForests)
+        this.allForests.push(forest)
 
-          const forest = new Forest(playerName, this.allForests)
-          this.allForests.push(forest)
+        const forestCards = ForestAssembler.assembleForest(player.annotations);
 
-          player.annotations = predictionResult;
-
-          const forestCards = ForestAssembler.assembleForest(predictionResult);
-
-          forest.setCards(forestCards)
-          forest.caveCount = player.cardsInCave
-        }
-
-      });
-
-      for (const forest of this.allForests)
-      {
-        forest.updatePoints()
+        forest.setCards(forestCards)
+        forest.caveCount = player.cardsInCave
       }
-
-      console.log('Annotation results:', predictionResults);
-    } catch (error)
-    {
-      console.error('Error annotating images:', error);
-    } finally
-    {
-      this.isLoading = false;
     }
 
+    for (const forest of this.allForests)
+    {
+      forest.updatePoints()
+    }
+
+    this.isLoading = false;
   }
+
 }
