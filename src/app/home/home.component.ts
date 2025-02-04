@@ -83,53 +83,42 @@ export class HomeComponent implements OnInit
   {
     this.allForests.length = 0; // clear all forests
 
-    this.isLoading = true;
-    console.log('Submitted data:', this.playerService.players);
-
-    const annotationPromises = this.playerService.players.map(player =>
-      player.boardGame
-        ? lastValueFrom(this.imageAnnotator.annotate(player.boardGame))
-        : Promise.resolve(null)
-    );
-
     try
     {
-      const predictionResults = await Promise.all(annotationPromises);
+      this.isLoading = true;
+      const players = this.playerService.players
+      console.log('Submitted data:', players);
 
-      predictionResults.forEach((predictionResult, index) =>
+      for (const [playerIndex, player] of players.entries())
       {
-        if (predictionResult != null)
+        if (player.annotations)
         {
-          let player = this.playerService.players[index]
-
-          const playerName = player.name || `Player${index + 1}`
+          const playerName = player.name || `Player${playerIndex + 1}`
 
           const forest = new Forest(playerName, this.allForests)
           this.allForests.push(forest)
 
-          player.annotations = predictionResult;
-
-          const forestCards = ForestAssembler.assembleForest(predictionResult);
+          const forestCards = ForestAssembler.assembleForest(player.annotations);
 
           forest.setCards(forestCards)
           forest.caveCount = player.cardsInCave
         }
-
-      });
+      }
 
       for (const forest of this.allForests)
       {
         forest.updatePoints()
       }
-
-      console.log('Annotation results:', predictionResults);
-    } catch (error)
+    }
+    catch (error)
     {
-      console.error('Error annotating images:', error);
-    } finally
+      alert(error);
+    }
+    finally
     {
       this.isLoading = false;
     }
 
   }
+
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject, filter } from 'rxjs';
 
 export type ActionCallback = (btn: NavButton) => void;
 
 export interface NavButton
 {
   label: string;
-  class: string;
   action: ActionCallback;
+  class?: string;
   visible?: boolean;
   icon?: string;
 }
@@ -17,8 +18,19 @@ export interface NavButton
 })
 export class HeaderService
 {
-  private buttonsSubject = new BehaviorSubject<NavButton[]>([]);
+  private emptyButton: NavButton = { label: "Hello", action: this.noAction, visible: false } // Used to calculate navBar high at startup
+  private buttonsSubject = new BehaviorSubject<NavButton[]>([this.emptyButton]);
   buttons$ = this.buttonsSubject.asObservable();
+
+  constructor(private router: Router)
+  {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) =>
+      {
+        this.buttonsSubject.next([this.emptyButton]);
+      });
+  }
 
   setButtons(buttons: NavButton[])
   {
@@ -31,5 +43,9 @@ export class HeaderService
   getButtons(): NavButton[]
   {
     return this.buttonsSubject.getValue();
+  }
+
+  noAction(button: NavButton)
+  {
   }
 }
