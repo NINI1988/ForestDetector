@@ -4,14 +4,13 @@ on:
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows manual triggering
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  # Build job
   deploy:
     runs-on: ubuntu-latest
 
@@ -28,8 +27,9 @@ jobs:
         run: |
           npm install
           npm run deploy
+          cp dist/forest-detector/browser/index.html dist/forest-detector/browser/404.html
 
-      - name: Deploy
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          FOLDER: dist/forest-detector/browser
+          folder: dist/forest-detector/browser

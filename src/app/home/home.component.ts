@@ -117,6 +117,11 @@ export class HomeComponent implements OnInit
     finally
     {
       this.isLoading = false;
+
+      setTimeout(() =>
+      {
+        window.scrollTo(0, document.body.scrollHeight);
+      })
     }
 
   }
