@@ -14,7 +14,7 @@ export class ImageAnnotatorService
 
   constructor()
   {
-    ort.env.wasm.wasmPaths = "/assets/onnxruntime-web/";
+    ort.env.wasm.wasmPaths = "assets/onnxruntime-web/";
     // ort.env.wasm.numThreads = 2;
     // ort.env.wasm.simd = true;
   }
@@ -81,7 +81,7 @@ export class ImageAnnotatorService
     // });
     try
     {
-      const response = await fetch('/assets/models/best.onnx');
+      const response = await fetch('assets/models/best.onnx');
       this.blob = await response.blob();
       return this.blob;
     } finally
