@@ -24,6 +24,7 @@
     "bootstrap-icons": "^1.11.3",
     "fabric": "^6.5.4",
     "gh-pages": "^6.3.0",
+    "onnxruntime-web": "^1.20.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
