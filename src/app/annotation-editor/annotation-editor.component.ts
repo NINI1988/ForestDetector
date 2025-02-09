@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, HostListener } from '@angular/core';
+import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { PlayerService } from '../player.service';
 import { Player } from '../../model/player';
 import * as fabric from 'fabric';
 import { HeaderService, NavButton } from '../header.service';
-import { Router } from '@angular/router';
 import { Prediction } from '../../model/prediction-result';
 
 
@@ -37,9 +37,9 @@ export class AnnotationEditorComponent implements OnInit
     this.player = this.playerService.getPlayer(playerNumber);
   }
 
-  constructor(private playerService: PlayerService, private headerService: HeaderService, private router: Router) { }
+  constructor(private playerService: PlayerService, private headerService: HeaderService, private location: Location) { }
 
-  ngOnInit(): void
+  async ngOnInit()
   {
     console.log(this.player?.annotations);
     this.headerService.setButtons([
@@ -57,7 +57,7 @@ export class AnnotationEditorComponent implements OnInit
       }
     ]);
 
-    this.initCanvas();
+    await this.initCanvas();
     this.updateCanvas();
   }
 
@@ -80,7 +80,18 @@ export class AnnotationEditorComponent implements OnInit
     return { width, height }
   }
 
-  initCanvas(): void
+  async loadImage(src: string): Promise<HTMLImageElement>
+  {
+    return new Promise((resolve, reject) =>
+    {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+    });
+  }
+
+  async initCanvas()
   {
     if (!this.player?.boardGame || !this.player?.annotations?.predictions)
     {
@@ -88,8 +99,7 @@ export class AnnotationEditorComponent implements OnInit
       throw new Error("Init: Missing image or annotations:");
     }
 
-    const img = new Image();
-    img.src = this.player.boardGame;
+    const img = await this.loadImage(this.player.boardGame)
 
     const canvas = new fabric.Canvas('annotationCanvas',
       {
@@ -140,7 +150,7 @@ export class AnnotationEditorComponent implements OnInit
 
   }
 
-  updateCanvas(): void
+  updateCanvas()
   {
     if (!this.player?.boardGame || !this.player?.annotations?.predictions || !this.canvas || !this.canvas.backgroundImage)
     {
@@ -159,8 +169,7 @@ export class AnnotationEditorComponent implements OnInit
 
     this.canvas.setDimensions({ width: width, height: height });
 
-    const img = new Image();
-    img.src = this.player.boardGame;
+    const img = this.player.annotations.image
     const scaleX = width / img.width
     const scaleY = height / img.height
     const scale = Math.min(scaleX, scaleY)
@@ -175,7 +184,7 @@ export class AnnotationEditorComponent implements OnInit
 
   cancelEdit(button: NavButton)
   {
-    this.router.navigate(['/']);
+    this.location.back();
   }
 
   /**

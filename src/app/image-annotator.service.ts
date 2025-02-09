@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { Prediction, PredictionResult } from '../model/prediction-result';
 import * as ort from 'onnxruntime-web';
+import { DownloadService } from './download.service';
 
 
 @Injectable({
@@ -10,28 +11,33 @@ import * as ort from 'onnxruntime-web';
 export class ImageAnnotatorService
 {
 
-  public blob: Blob | undefined;
+  private session: Promise<ort.InferenceSession>;
 
-  constructor()
+  constructor(public downloadService: DownloadService)
   {
-    ort.env.wasm.wasmPaths = "assets/onnxruntime-web/";
-    // ort.env.wasm.numThreads = 2;
-    // ort.env.wasm.simd = true;
+    this.session = this.loadResources()
   }
 
-  private async getModelBlob(): Promise<Blob>
+  private async loadResources(): Promise<ort.InferenceSession>
   {
-    if (!this.blob)
-    {
-      this.blob = await this.downloadModel();
-    }
-    return this.blob;
+    const wasmUrl = `assets/onnxruntime-web/ort-wasm-simd-threaded.wasm`;
+    const modelUrl = `assets/models/best.onnx`;
+
+    const [wasmBinary, modelBinary] = await this.downloadService.loadResources([wasmUrl, modelUrl])
+
+    ort.env.wasm.wasmBinary = wasmBinary;
+
+    return ort.InferenceSession.create(modelBinary);
   }
 
-  public annotate(image: string): Observable<PredictionResult>
+  public async annotate(image: string): Promise<PredictionResult>
   {
-    const result = from(this.detect_objects_on_image(image));
-    return result
+    const [input, img_width, img_height] = await this.prepare_input(image);
+
+    const inputArray = new ort.Tensor(Float32Array.from(input), [1, 3, 640, 640]);
+    const session = await this.session
+    const outputs = await session.run({ images: inputArray });
+    return this.process_output(outputs["output0"].data, img_width, img_height);
   }
 
   private iou(box1: Prediction, box2: Prediction)
@@ -74,22 +80,6 @@ export class ImageAnnotatorService
     return (x2 - x1) * (y2 - y1); // Area of intersection
   }
 
-  private async downloadModel(): Promise<Blob>
-  {
-    // const element = await this.dialogService.showLoading({
-    //   message: 'Downloading model...',
-    // });
-    try
-    {
-      const response = await fetch('assets/models/best.onnx');
-      this.blob = await response.blob();
-      return this.blob;
-    } finally
-    {
-      // await element.dismiss();
-    }
-  }
-
   private async resizeAndPadTo640(base64: string): Promise<{ imageData: ImageData, imgWidth: number, imgHeight: number }>
   {
     return new Promise((resolve, reject) =>
@@ -125,13 +115,6 @@ export class ImageAnnotatorService
     });
   }
 
-  private async detect_objects_on_image(image: string)
-  {
-    const [input, img_width, img_height] = await this.prepare_input(image);
-    const output = await this.run_model(input);
-    return this.process_output(output, img_width, img_height);
-  }
-
   private async prepare_input(image: string): Promise<[number[], number, number]>
   {
     return new Promise(resolve =>
@@ -164,18 +147,6 @@ export class ImageAnnotatorService
         resolve([input, img_width, img_height])
       }
     })
-  }
-
-  private async run_model(input: Iterable<number>)
-  {
-    const blob = await this.getModelBlob();
-
-    const arrayBuffer = await blob.arrayBuffer();
-
-    const model = await ort.InferenceSession.create(arrayBuffer);
-    const inputArray = new ort.Tensor(Float32Array.from(input), [1, 3, 640, 640]);
-    const outputs = await model.run({ images: inputArray });
-    return outputs["output0"].data;
   }
 
   private process_output(modelData: any[] | Float32Array<ArrayBufferLike> | Uint8Array<ArrayBufferLike> | Int8Array<ArrayBufferLike> | Uint16Array<ArrayBufferLike> | Int16Array<ArrayBufferLike> | Int32Array<ArrayBufferLike> | BigInt64Array<ArrayBufferLike> | Float64Array<ArrayBufferLike> | Uint32Array<ArrayBufferLike> | BigUint64Array<ArrayBufferLike>, img_width: number, img_height: number)

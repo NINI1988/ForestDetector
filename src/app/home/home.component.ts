@@ -8,10 +8,11 @@ import { PlayerService } from '../player.service';
 import { ForestAssembler } from '../../model/forest-assembler';
 import { Forest } from '../../model/forest';
 import { HeaderService, NavButton } from '../header.service';
+import { DownloadProgressComponent } from "../download-progress/download-progress.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, RouterLink, RouterModule],
+  imports: [CommonModule, FormsModule, RouterLink, RouterModule, DownloadProgressComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -80,7 +81,7 @@ export class HomeComponent implements OnInit
       // Store the base64 image data in the player
       this.playerService.updatePlayerBoardGame(playerIndex, image);
 
-      const predictionResult = await lastValueFrom(this.imageAnnotator.annotate(image));
+      const predictionResult = await this.imageAnnotator.annotate(image);
       this.playerService.players[playerIndex].annotations = predictionResult;
     } catch (error)
     {
