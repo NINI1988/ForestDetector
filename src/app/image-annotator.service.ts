@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
 import { Prediction, PredictionResult } from '../model/prediction-result';
 import * as ort from 'onnxruntime-web';
 import { DownloadService } from './download.service';
+import { onnx } from 'onnx-proto';
 
 
 @Injectable({
@@ -12,10 +12,50 @@ export class ImageAnnotatorService
 {
 
   private session: Promise<ort.InferenceSession>;
+  labels: string[] = [];
 
   constructor(public downloadService: DownloadService)
   {
     this.session = this.loadResources()
+  }
+
+  /**
+   * Parse meta value like "{0: 'Ahorn', 1: 'Alpen-Apollofalter_Blue', 2: 'Alpen-Apollofalter_Grey'}"
+   * @param str
+   */
+  private parseMetaValue(str: string)
+  {
+    // Remove the surrounding braces
+    const trimmed = str.slice(1, -1);
+
+    // Split by comma
+    const parts = trimmed.split(/\s*,\s*/);
+
+    // Extract only the value from each "key: value" pair
+    const values = parts.map(item =>
+    {
+      // Split at the colon and take the second part (value)
+      const valuePart = item.split(/\s*:\s*/)[1];
+      // Remove the surrounding single quotes
+      return valuePart.replace(/^'|'$/g, '');
+    });
+    return values
+  }
+
+  private loadLabels(modelBinary: ArrayBuffer)
+  {
+    const model = onnx.ModelProto.decode(new Uint8Array(modelBinary))
+
+    const namesEntry = model.metadataProps.find(item => item.key === "names");
+
+    if (namesEntry && namesEntry.value)
+    {
+      return this.parseMetaValue(namesEntry?.value)
+    }
+    else
+    {
+      throw new Error("Names entry not found")
+    }
   }
 
   private async loadResources(): Promise<ort.InferenceSession>
@@ -26,6 +66,8 @@ export class ImageAnnotatorService
     const [wasmBinary, modelBinary] = await this.downloadService.loadResources([wasmUrl, modelUrl])
 
     ort.env.wasm.wasmBinary = wasmBinary;
+
+    this.labels = this.loadLabels(modelBinary)
 
     return ort.InferenceSession.create(modelBinary);
   }
@@ -162,8 +204,7 @@ export class ImageAnnotatorService
       {
         continue;
       }
-      // const label = yolo_classes[class_id];
-      const label = class_id;
+      const label = this.labels[class_id];
       const xc = modelData[index];
       const yc = modelData[8400 + index];
       const w = modelData[2 * 8400 + index];
