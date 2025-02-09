@@ -90,15 +90,14 @@
   </table>
 </div>
 
-<!-- Submit Button -->
-<div class="d-flex justify-content-center mt-3">
+<div class="d-flex justify-content-center mt-3" *ngIf="false">
   <div class="form-check ms-3">
     <input
-      disabled=""
-      class="form-check-input"
-      type="checkbox"
-      id="saveDataCheckbox"
-      [(ngModel)]="uploadData"
+    disabled=""
+    class="form-check-input"
+    type="checkbox"
+    id="saveDataCheckbox"
+    [(ngModel)]="uploadData"
     />
     <label class="form-check-label" for="saveDataCheckbox">
       Upload Images to improve Card Detection
@@ -106,6 +105,7 @@
   </div>
 </div>
 
+<!-- Submit Button -->
 <div class="d-flex justify-content-center mt-3">
   <div class="ms-3">
     <button class="btn btn-success" (click)="submit()" [disabled]="isLoading">
