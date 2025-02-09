@@ -64,9 +64,7 @@ export class HomeComponent implements OnInit
       const reader = new FileReader();
       reader.onload = async (e: any) =>
       {
-
-
-        console.log('Image:', e.target.result);
+        // console.log('Image:', e.target.result);
 
         await this.predictPlayer(index, e.target.result)
       };
@@ -81,8 +79,11 @@ export class HomeComponent implements OnInit
       // Store the base64 image data in the player
       this.playerService.updatePlayerBoardGame(playerIndex, image);
 
-      const predictionResult = await this.imageAnnotator.annotate(image);
-      this.playerService.players[playerIndex].annotations = predictionResult;
+      setTimeout(async () => // Display image before running detection
+      {
+        const predictionResult = await this.imageAnnotator.annotate(image);
+        this.playerService.players[playerIndex].annotations = predictionResult;
+      }, 100);
     } catch (error)
     {
       console.error('Error annotating image:', error);

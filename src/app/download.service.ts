@@ -33,14 +33,14 @@ export class DownloadService
     // If the file is already cached, load it and mark progress as complete.
     if (await this.isFileCached(url))
     {
-      console.log(`Loading ${url} from Cache Storage...`);
+      // console.log(`Loading ${url} from Cache Storage...`);
       const cachedBuffer = await this.getCachedFile(url);
       // Report full progress for this file.
       progressCallback(this.expectedSizes[url] || 1, this.expectedSizes[url] || 1);
       return cachedBuffer;
     }
 
-    console.log(`Downloading ${url}...`);
+    // console.log(`Downloading ${url}...`);
     const response = await fetch(url);
     if (!response.ok)
     {
@@ -188,7 +188,7 @@ export class DownloadService
     // Ensure progress is set to 100% once all files have been handled.
     this.loadingProgress.next(100);
     this.isLoading.next(false);
-    console.log('All files loaded successfully using cached/downloaded data.');
+    // console.log('All files loaded successfully using cached/downloaded data.');
 
     // Return the binary files as an array of ArrayBuffer.
     return results;
