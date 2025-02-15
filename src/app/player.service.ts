@@ -36,9 +36,8 @@ export class PlayerService
 
   updatePlayerBoardGame(index: number, boardGame: string)
   {
-    if (this.players[index])
-    {
-      this.players[index].boardGame = boardGame;
-    }
+    const player = this.players[index]
+    player.annotations = undefined
+    player.boardGame = boardGame;
   }
 }
