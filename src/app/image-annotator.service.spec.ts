@@ -21,7 +21,7 @@ describe('ImageAnnotator', () =>
   it('should create an instance', async () =>
   {
     const service = TestBed.inject(ImageAnnotatorService);
-    const result = await lastValueFrom(service.annotate(image_161Points))
+    const result = await service.annotate(image_161Points)
     expect(result.predictions.length).toEqual(29)
     // expect(result).toEqual(predictionResult161Points)
   });
