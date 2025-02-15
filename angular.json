@@ -29,6 +29,11 @@
                 "glob": "**/*",
                 "input": "src/third_party/glaures_forestshuffle/public/img",
                 "output": "glImg"
+              },
+              {
+                "glob": "**/ort-wasm-simd-threaded.wasm",
+                "input": "node_modules/onnxruntime-web/dist/",
+                "output": "assets/onnxruntime-web/"
               }
             ],
             "styles": [
@@ -97,6 +102,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/ort-wasm-simd-threaded.wasm",
+                "input": "node_modules/onnxruntime-web/dist/",
+                "output": "assets/onnxruntime-web/"
               }
             ],
             "styles": [

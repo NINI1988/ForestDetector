@@ -8,10 +8,11 @@ import { PlayerService } from '../player.service';
 import { ForestAssembler } from '../../model/forest-assembler';
 import { Forest } from '../../model/forest';
 import { HeaderService, NavButton } from '../header.service';
+import { DownloadProgressComponent } from "../download-progress/download-progress.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, RouterLink, RouterModule],
+  imports: [CommonModule, FormsModule, RouterLink, RouterModule, DownloadProgressComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -35,6 +36,15 @@ export class HomeComponent implements OnInit
         visible: true
       }
     ]);
+
+    // Just for development
+    for (const [playerIndex, player] of this.playerService.players.entries())
+    {
+      if (player.boardGame && !player.annotations)
+      {
+        this.predictPlayer(playerIndex, player.boardGame);
+      }
+    }
   }
 
   showHelp(button: NavButton)
@@ -54,25 +64,29 @@ export class HomeComponent implements OnInit
       const reader = new FileReader();
       reader.onload = async (e: any) =>
       {
-        // Store the base64 image data in the player
-        this.playerService.updatePlayerBoardGame(index, e.target.result);
+        // console.log('Image:', e.target.result);
 
-        console.log('Image:', e.target.result);
-
-        // Directly call the annotation service
-        try
-        {
-          // await new Promise(resolve => setTimeout(resolve, 1000));
-          // this.playerService.players[index].annotations = <PredictionResult>{}
-
-          const predictionResult = await lastValueFrom(this.imageAnnotator.annotate(e.target.result));
-          this.playerService.players[index].annotations = predictionResult;
-        } catch (error)
-        {
-          console.error('Error annotating image:', error);
-        }
+        await this.predictPlayer(index, e.target.result)
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  async predictPlayer(playerIndex: number, image: string)
+  {
+    try
+    {
+      // Store the base64 image data in the player
+      this.playerService.updatePlayerBoardGame(playerIndex, image);
+
+      setTimeout(async () => // Display image before running detection
+      {
+        const predictionResult = await this.imageAnnotator.annotate(image);
+        this.playerService.players[playerIndex].annotations = predictionResult;
+      }, 100);
+    } catch (error)
+    {
+      console.error('Error annotating image:', error);
     }
   }
 
