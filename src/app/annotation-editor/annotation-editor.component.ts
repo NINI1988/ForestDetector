@@ -6,6 +6,8 @@ import { Player } from '../../model/player';
 import * as fabric from 'fabric';
 import { HeaderService, NavButton } from '../header.service';
 import { Prediction } from '../../model/prediction-result';
+import { cards } from '../../model/cards';
+import { CardColor } from '../../model/card-color';
 
 
 @Component({
@@ -91,6 +93,42 @@ export class AnnotationEditorComponent implements OnInit
     });
   }
 
+  getCardColor(cardLabel: string): string
+  {
+    const color = cards[cardLabel].color
+    switch (color)
+    {
+      case CardColor.LINDEN:
+        return `rgba(255,233,0, 1)`
+      case CardColor.OAK:
+        return `rgba(100,40,0, 1)`
+      case CardColor.SILVER_FIR:
+        return `rgba(0,29,255, 1)`
+      case CardColor.BIRCH:
+        return `rgba(47,247,11, 1)`
+      case CardColor.BEECH:
+        return `rgba(0,76,0, 1)`
+      case CardColor.SYCAMORE:
+        return `rgba(255,0,0, 1)`
+      case CardColor.DOUGLAS_FIR:
+        return `rgba(194,194,172, 1)`
+      case CardColor.HORSE_CHESTNUT:
+        return `rgba(255,142,0, 1)`
+      case CardColor.LARIX:
+        return `rgba(94,3,140, 1)`
+      case CardColor.PINUS:
+        return `rgba(255,0,233, 1)`
+      default: // Tree sprout, Unknown
+        return `rgba(255, 255, 255, 1)`
+    }
+  }
+
+  getCardColorAlpha(cardLabel: string, opacity: number = 0.3): string
+  {
+    const rgba = this.getCardColor(cardLabel)
+    return rgba.replace(", 1)", `, ${opacity})`)
+  }
+
   async initCanvas()
   {
     if (!this.player?.boardGame || !this.player?.annotations?.predictions)
@@ -135,8 +173,8 @@ export class AnnotationEditorComponent implements OnInit
         top: (prediction.y - prediction.height / 2),
         width: prediction.width,
         height: prediction.height,
-        fill: 'rgba(255, 0, 0, 0.3)',
-        stroke: 'red',
+        fill: this.getCardColorAlpha(prediction.class, 0.3),
+        stroke: this.getCardColor(prediction.class),
         strokeWidth: 2,
         cornerStyle: 'circle',
       });

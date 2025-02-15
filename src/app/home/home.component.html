@@ -61,7 +61,7 @@
           />
 
           <!-- Preview if image is selected -->
-          <div *ngIf="player.boardGame" style="margin-top: 10px;">
+          <div *ngIf="player.boardGame" style="margin-top: 10px; position: relative;">
             <a [routerLink]="player.annotations ? ['/edit', i] : null" class="d-flex justify-content-center align-items-center">
               <img
                 [src]="player.boardGame"
@@ -69,9 +69,15 @@
                 width="80"
                 style="border: 1px solid #ccc; padding: 4px;"
               />
-              <span *ngIf="!player.annotations" class="spinner-border text-primary position-absolute" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <!-- Display edit icon if annotations exist, otherwise show spinner -->
+              <span *ngIf="player.annotations; else loading" class="position-absolute">
+                <i class="bi bi-pencil-square h2"></i>
               </span>
+              <ng-template #loading>
+                <span class="spinner-border text-primary position-absolute" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </span>
+              </ng-template>
             </a>
           </div>
         </td>
