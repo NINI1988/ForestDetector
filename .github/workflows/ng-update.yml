@@ -14,4 +14,4 @@ jobs:
         uses: fast-facts/ng-update@v1
         with:
           base-branch: main
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GH_TOKEN }}
