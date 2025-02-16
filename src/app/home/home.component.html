@@ -28,6 +28,8 @@
           <button
             class="btn btn-primary"
             (click)="fileInputCamera.click()"
+            title="Take picture"
+            [disabled]="player.annotating"
           >
           <i class="bi bi-camera"></i>
             <!-- Take/Upload Image -->
@@ -46,6 +48,8 @@
           <button
             class="btn btn-primary"
             (click)="fileInputImage.click()"
+            title="Upload picture"
+            [disabled]="player.annotating"
           >
             <i class="bi bi-image"></i>
             <!-- Take/Upload Image -->
@@ -60,6 +64,15 @@
             (change)="onFileSelected(i, $event)"
           />
 
+          <button *ngIf="player.boardGame"
+            class="btn btn-primary"
+            (click)="onRotateImage(i)"
+            title="Rotate image"
+            [disabled]="player.annotating"
+          >
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+
           <!-- Preview if image is selected -->
           <div *ngIf="player.boardGame" style="margin-top: 10px; position: relative;">
             <a [routerLink]="player.annotations ? ['/edit', i] : null" class="d-flex justify-content-center align-items-center">
@@ -70,14 +83,12 @@
                 style="border: 1px solid #ccc; padding: 4px;"
               />
               <!-- Display edit icon if annotations exist, otherwise show spinner -->
-              <span *ngIf="player.annotations; else loading" class="position-absolute">
+              <span *ngIf="player.annotations && !player.annotating" class="position-absolute">
                 <i class="bi bi-pencil-square h2"></i>
               </span>
-              <ng-template #loading>
-                <span class="spinner-border text-primary position-absolute" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </span>
-              </ng-template>
+              <span *ngIf="player.annotating" class="spinner-border text-primary position-absolute" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </span>
             </a>
           </div>
         </td>

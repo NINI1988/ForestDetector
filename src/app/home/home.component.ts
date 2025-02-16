@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { lastValueFrom } from 'rxjs';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { ImageAnnotatorService } from '../image-annotator.service';
 import { PlayerService } from '../player.service';
@@ -74,20 +73,82 @@ export class HomeComponent implements OnInit
 
   async predictPlayer(playerIndex: number, image: string)
   {
+    const player = this.playerService.players[playerIndex]
     try
     {
+      player.annotating = true
       // Store the base64 image data in the player
       this.playerService.updatePlayerBoardGame(playerIndex, image);
 
       setTimeout(async () => // Display image before running detection
       {
         const predictionResult = await this.imageAnnotator.annotate(image);
-        this.playerService.players[playerIndex].annotations = predictionResult;
+        player.annotations = predictionResult;
+        player.annotating = false
       }, 100);
     } catch (error)
     {
       console.error('Error annotating image:', error);
+      player.annotating = false
     }
+  }
+
+  private rotateTimeouts = new Map<number, any>();
+  async onRotateImage(playerIndex: number)
+  {
+    const image = this.playerService.getPlayer(playerIndex)?.boardGame
+    if (image)
+    {
+      const rotatedImage = await this.rotateImage(image, 90)
+      this.playerService.updatePlayerBoardGame(playerIndex, rotatedImage);
+
+      if (this.rotateTimeouts.has(playerIndex))
+      {
+        clearTimeout(this.rotateTimeouts.get(playerIndex));
+      }
+      // predictPlayer only after user does not trigger rotate again
+      this.rotateTimeouts.set(playerIndex, setTimeout(async () =>
+      {
+        await this.predictPlayer(playerIndex, rotatedImage)
+        this.rotateTimeouts.delete(playerIndex);
+      }, 1000));
+    }
+  }
+
+  rotateImage(imageSrc: string, angle: number): Promise<string>
+  {
+    return new Promise((resolve) =>
+    {
+      const img = new Image();
+      img.src = imageSrc;
+      img.onload = () =>
+      {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        if (!context) throw new Error("Could not get context");
+
+        // Set canvas size dynamically based on rotation
+        if (angle === 90 || angle === 270)
+        {
+          canvas.width = img.height;
+          canvas.height = img.width;
+        } else
+        {
+          canvas.width = img.width;
+          canvas.height = img.height;
+        }
+
+        // Move origin to center and rotate
+        context.translate(canvas.width / 2, canvas.height / 2);
+        context.rotate((angle * Math.PI) / 180); // Negative to correct orientation
+
+        // Draw image at new position
+        context.drawImage(img, -img.width / 2, -img.height / 2);
+
+        // Convert canvas to Base64 image string
+        resolve(canvas.toDataURL());
+      };
+    });
   }
 
   /**
