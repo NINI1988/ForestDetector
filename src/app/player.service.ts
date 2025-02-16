@@ -25,7 +25,7 @@ export class PlayerService
     this.players = [];
     for (let i = 0; i < count; i++)
     {
-      this.players.push({ name: ``, cardsInCave: 0 });
+      this.players.push({ name: ``, cardsInCave: 0, annotating: false });
     }
   }
 
