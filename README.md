@@ -8,7 +8,7 @@ See https://nini1988.github.io/ForestDetector/
 <img src="images/Home.png" width="300">
 
 ### AnnotationEditor
-![AnnotationEditor](images/AnnotationEditor.png)
+![AnnotationEditor](images/AnnotationEditor.jpg)
 
 # Third party modules
 - This project uses https://github.com/glaures/forestshuffle for score calculation, translations and symbols.
