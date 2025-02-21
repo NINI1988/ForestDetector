@@ -12,7 +12,7 @@ See https://nini1988.github.io/ForestDetector/
 
 # Third party modules
 - This project uses https://github.com/glaures/forestshuffle for score calculation, translations and symbols.
-  - The project is licensed under Apache License, Version 2.0. The original license can be found in `src/third_party/glaures_forestshuffle/LICENSE.txt`.
+  - The project is licensed under Apache License, Version 2.0. The original license can be found in [src/third_party/glaures_forestshuffle/LICENSE.txt](src/third_party/glaures_forestshuffle/LICENSE.txt).
 
 - This project uses https://github.com/ultralytics/ultralytics for the training of the yolo model for card detection.
   -  The project is licensed under AGPL-3.0 license. The original license can be found in https://github.com/ultralytics/ultralytics/blob/main/LICENSE.
