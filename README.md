@@ -4,6 +4,10 @@ Calculate a score from the Forest Shuffle (german Mischwald) board game with com
 See https://nini1988.github.io/ForestDetector/
 
 # Examples
+<video width="320" controls>
+  <source src="images/ScreenCapture.mp4" type="video/mp4">
+</video>
+
 ### Home
 <img src="images/Home.png" width="300">
 
