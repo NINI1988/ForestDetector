@@ -1,0 +1,8 @@
+img.captureExample{
+  width: 100%;
+}
+
+a {
+  word-wrap: break-word; /* Ensures text wraps */
+  overflow-wrap: break-word; /* Alternative for better browser support */
+}
