@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Help</h4>
+  <h4 class="modal-title" ngbAutofocus id="modal-basic-title">Help</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
 </div>
 <div class="modal-body">
@@ -13,14 +13,27 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
+          <h2>Important</h2>
+          <hr>
           <ul>
-            <li><strong>Take one picture per player</strong></li>
-            <li><strong>The cards must be upright</strong></li>
+            <li>Take one picture per player</li>
+            <li>The cards must be upright</li>
+            <li>Take the picture from above</li>
+          </ul>
+          <h2>Wrong example</h2>
+          <hr>
+          <img class="captureExample" src="assets/images/CaptureWrong.jpg" alt="CaptureWrong">
+          <ul>
             <li>Exclude other player cards</li>
             <li>Exclude cards from clearing</li>
             <li>Exclude the pile</li>
+            <li>Separate stacked cards</li>
+            <li>Color symbols must be visible</li>
             <li>Exclude cards in your cave</li>
           </ul>
+          <h2>Correct example</h2>
+          <hr>
+          <img class="captureExample" src="assets/images/CaptureCorrect.jpg" alt="CaptureCorrect">
         </div>
       </div>
     </div>
@@ -56,8 +69,8 @@
   </div>
 
 </div>
-<div class="modal-footer">
-  <div *ngIf="showCheckbox" class="form-check mr-auto">
+<div class="modal-footer" *ngIf="showCheckbox">
+  <div class="form-check mr-auto">
     <input type="checkbox" class="form-check-input" id="dontShowAgain" [(ngModel)]="dontShowAgain">
     <label class="form-check-label" for="dontShowAgain">Don't show again</label>
   </div>

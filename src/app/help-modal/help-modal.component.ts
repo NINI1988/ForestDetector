@@ -37,7 +37,7 @@ export class HelpModalComponent
       // Do not open if user chose "Don't show again"
       return
     }
-    const modalRef = modalService.open(HelpModalComponent);
+    const modalRef = modalService.open(HelpModalComponent, { size: 'xl', scrollable: true });
     modalRef.componentInstance.showCheckbox = showCheckbox;
     try
     {
