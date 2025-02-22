@@ -8,10 +8,12 @@ import { ForestAssembler } from '../../model/forest-assembler';
 import { Forest } from '../../model/forest';
 import { HeaderService, NavButton } from '../header.service';
 import { DownloadProgressComponent } from "../download-progress/download-progress.component";
+import { HelpModalComponent } from '../help-modal/help-modal.component';
+import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, RouterLink, RouterModule, DownloadProgressComponent],
+  imports: [CommonModule, FormsModule, RouterLink, RouterModule, DownloadProgressComponent, NgbModalModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit
   isLoading = false;
   uploadData = true;
 
-  constructor(private imageAnnotator: ImageAnnotatorService, private router: Router, public playerService: PlayerService, private headerService: HeaderService) { }
+  constructor(private imageAnnotator: ImageAnnotatorService, private router: Router, public playerService: PlayerService, private headerService: HeaderService, private modalService: NgbModal) { }
 
   ngOnInit(): void
   {
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit
         label: '',
         icon: 'bi-question-circle',
         class: 'btn-primary',
-        action: this.showHelp,
+        action: this.showHelpNav.bind(this),
         visible: true
       }
     ]);
@@ -46,9 +48,23 @@ export class HomeComponent implements OnInit
     }
   }
 
-  showHelp(button: NavButton)
+  /**
+   * This function is called when help button is clicked in the navigation bar
+   * @param button
+   */
+  showHelpNav(button: NavButton)
   {
-    alert('Help dialog opened');
+    HelpModalComponent.open(this.modalService);
+  }
+
+  /**
+   * Will be called when take picture/upload image will be clicked.
+   * The first time a help will be displayed.
+   */
+  async handleImageOpen(fileInput: HTMLInputElement)
+  {
+    await HelpModalComponent.open(this.modalService, true);
+    fileInput.click(); // Trigger the correct file input
   }
 
   /**

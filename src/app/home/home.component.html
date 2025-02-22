@@ -27,7 +27,7 @@
         <td>
           <button
             class="btn btn-primary"
-            (click)="fileInputCamera.click()"
+            (click)="handleImageOpen(fileInputCamera)"
             title="Take picture"
             [disabled]="player.annotating"
           >
@@ -47,7 +47,7 @@
 
           <button
             class="btn btn-primary"
-            (click)="fileInputImage.click()"
+            (click)="handleImageOpen(fileInputImage)"
             title="Upload picture"
             [disabled]="player.annotating"
           >
