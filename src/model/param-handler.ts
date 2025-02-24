@@ -135,7 +135,7 @@ export class ParamHandler
         const cardsOnBase = forest.getCardsOnBase(forestCard.baseIndex)
         for (const cardOnBase of cardsOnBase)
         {
-          const cardOnBaseInfo = cards[forestCard.id]
+          const cardOnBaseInfo = cards[cardOnBase.id]
           const glCard = forest.findCard(cardOnBaseInfo.glCardName)
           if (glCard.symbols?.includes('bat'))
           {
