@@ -93,9 +93,8 @@ export class AnnotationEditorComponent implements OnInit
     });
   }
 
-  getCardColor(cardLabel: string): string
+  getCardColor(color: CardColor): string
   {
-    const color = cards[cardLabel].color
     switch (color)
     {
       case CardColor.LINDEN:
@@ -105,7 +104,7 @@ export class AnnotationEditorComponent implements OnInit
       case CardColor.SILVER_FIR:
         return `rgba(0,29,255, 1)`
       case CardColor.BIRCH:
-        return `rgba(47,247,11, 1)`
+        return `rgba(91, 209, 55, 1)`
       case CardColor.BEECH:
         return `rgba(0,76,0, 1)`
       case CardColor.SYCAMORE:
@@ -123,9 +122,13 @@ export class AnnotationEditorComponent implements OnInit
     }
   }
 
-  getCardColorAlpha(cardLabel: string, opacity: number = 0.3): string
+  getCardColorAlpha(color: CardColor, opacity: number = 0.3): string
   {
-    const rgba = this.getCardColor(cardLabel)
+    if (color == CardColor.DOUGLAS_FIR)
+    {
+      opacity *= 2
+    }
+    const rgba = this.getCardColor(color)
     return rgba.replace(", 1)", `, ${opacity})`)
   }
 
@@ -168,14 +171,15 @@ export class AnnotationEditorComponent implements OnInit
 
     for (const prediction of this.currentPredictions)
     {
+      const color = cards[prediction.class].color
       let rect = new fabric.Rect({
         left: (prediction.x - prediction.width / 2),
         top: (prediction.y - prediction.height / 2),
         width: prediction.width,
         height: prediction.height,
-        fill: this.getCardColorAlpha(prediction.class, 0.3),
-        stroke: this.getCardColor(prediction.class),
-        strokeWidth: 2,
+        fill: this.getCardColorAlpha(color, 0.3),
+        stroke: this.getCardColor(color),
+        strokeWidth: 4,
         cornerStyle: 'circle',
       });
       // rect.controls = {
