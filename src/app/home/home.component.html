@@ -74,22 +74,28 @@
           </button>
 
           <!-- Preview if image is selected -->
-          <div *ngIf="player.boardGame" style="margin-top: 10px; position: relative;">
-            <a [routerLink]="player.annotations ? ['/edit', i] : null" class="d-flex justify-content-center align-items-center">
+          <div *ngIf="player.boardGame" class="boardGameContainer d-flex justify-content-center align-items-center"
+          [style.maxHeight.px]="player.boardGameContainerHeight + 2"
+          >
+            <a
+              #boardgame
+              [routerLink]="player.annotations ? ['/edit', i] : null"
+              class="boardgame d-flex justify-content-center align-items-center"
+              [ngStyle]="{'transform': 'rotate(' + player.rotationAngle + 'deg)'}"
+              [ngClass]="{'notransition': !player.rotating}"
+              >
               <img
                 [src]="player.boardGame"
                 alt="BoardGame"
-                height="130"
-                style="border: 1px solid #ccc; padding: 4px;"
-              />
-              <!-- Display edit icon if annotations exist, otherwise show spinner -->
-              <span *ngIf="player.annotations && !player.annotating" class="position-absolute">
-                <i class="bi bi-pencil-square h2"></i>
-              </span>
-              <span *ngIf="player.annotating" class="spinner-border text-primary position-absolute" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </span>
+                />
             </a>
+            <!-- Display edit icon if annotations exist, otherwise show spinner -->
+            <span *ngIf="player.annotations && !player.annotating" class="position-absolute text-primary pe-none">
+              <i class="bi bi-pencil-square h2"></i>
+            </span>
+            <span *ngIf="player.annotating" class="spinner-border text-primary position-absolute pe-none" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </span>
           </div>
         </td>
 

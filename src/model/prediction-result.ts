@@ -1,8 +1,6 @@
 export interface PredictionResult
 {
-  inference_id?: string;
   time: number;
-  image: Image;
   predictions: Prediction[];
 }
 
@@ -14,12 +12,11 @@ export interface Image
 
 export interface Prediction
 {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+  x: number; // 0-1
+  y: number; // 0-1
+  width: number; // 0-1
+  height: number; // 0-1
   confidence: number;
   class: string; // label
   class_id: number;
-  detection_id: string;
 }

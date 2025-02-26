@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterModule } from '@angular/router';
@@ -19,6 +19,8 @@ import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit
 {
+  @ViewChildren('boardgame') boardgameElements!: QueryList<ElementRef>;
+
   allForests: Forest[] = [];
 
   isLoading = false;
@@ -43,7 +45,7 @@ export class HomeComponent implements OnInit
     {
       if (player.boardGame && !player.annotations)
       {
-        this.predictPlayer(playerIndex, player.boardGame);
+        this.predictPlayer(playerIndex);
       }
     }
   }
@@ -71,7 +73,7 @@ export class HomeComponent implements OnInit
    * Called when user picks or takes a photo.
    * We store the DataURL for preview and later submit.
    */
-  onFileSelected(index: number, event: any)
+  onFileSelected(playerIndex: number, event: any)
   {
     const file = event.target.files[0];
     if (file)
@@ -81,24 +83,26 @@ export class HomeComponent implements OnInit
       {
         // console.log('Image:', e.target.result);
 
-        await this.predictPlayer(index, e.target.result)
+        // Store the base64 image data in the player
+        this.playerService.updatePlayerBoardGame(playerIndex, e.target.result);
+        await this.predictPlayer(playerIndex)
       };
       reader.readAsDataURL(file);
     }
   }
 
-  async predictPlayer(playerIndex: number, image: string)
+  async predictPlayer(playerIndex: number)
   {
-    const player = this.playerService.players[playerIndex]
+    const player = this.playerService.getPlayer(playerIndex)
     try
     {
       player.annotating = true
-      // Store the base64 image data in the player
-      this.playerService.updatePlayerBoardGame(playerIndex, image);
 
       setTimeout(async () => // Display image before running detection
       {
-        const predictionResult = await this.imageAnnotator.annotate(image);
+        if (!player.boardGame) throw new Error(`boardGame empty`);
+        this.rotationAnimationEnd(playerIndex)
+        const predictionResult = await this.imageAnnotator.annotate(player.boardGame, player.rotationAngle);
         player.annotations = predictionResult;
         player.annotating = false
       }, 100);
@@ -109,62 +113,50 @@ export class HomeComponent implements OnInit
     }
   }
 
-  private rotateTimeouts = new Map<number, any>();
-  async onRotateImage(playerIndex: number)
+  private rotationAnimationStart(playerIndex: number)
   {
-    const image = this.playerService.getPlayer(playerIndex)?.boardGame
-    if (image)
-    {
-      const rotatedImage = await this.rotateImage(image, 90)
-      this.playerService.updatePlayerBoardGame(playerIndex, rotatedImage);
+    const element: HTMLImageElement = this.boardgameElements.get(playerIndex)?.nativeElement
 
-      if (this.rotateTimeouts.has(playerIndex))
-      {
-        clearTimeout(this.rotateTimeouts.get(playerIndex));
-      }
-      // predictPlayer only after user does not trigger rotate again
-      this.rotateTimeouts.set(playerIndex, setTimeout(async () =>
-      {
-        await this.predictPlayer(playerIndex, rotatedImage)
-        this.rotateTimeouts.delete(playerIndex);
-      }, 1000));
+    const player = this.playerService.getPlayer(playerIndex)
+    const size = Math.max(element.clientWidth, element.clientHeight)
+    player.boardGameContainerHeight = size
+  }
+
+  private rotationAnimationEnd(playerIndex: number)
+  {
+    const element: HTMLImageElement = this.boardgameElements.get(playerIndex)?.nativeElement
+
+    const player = this.playerService.getPlayer(playerIndex)
+
+    const angle = player.rotationAngle % 360
+    if (angle == 0 || angle == 180)
+    {
+      player.boardGameContainerHeight = element.clientHeight
+    }
+    else
+    {
+      player.boardGameContainerHeight = element.clientWidth
     }
   }
 
-  rotateImage(imageSrc: string, angle: number): Promise<string>
+  async onRotateImage(playerIndex: number)
   {
-    return new Promise((resolve) =>
+    const player = this.playerService.getPlayer(playerIndex)
+    player.rotating = true
+    player.rotationAngle += 90;
+    this.rotationAnimationStart(playerIndex)
+
+    if (player.rotateTimeout)
     {
-      const img = new Image();
-      img.src = imageSrc;
-      img.onload = () =>
-      {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        if (!context) throw new Error("Could not get context");
-
-        // Set canvas size dynamically based on rotation
-        if (angle === 90 || angle === 270)
-        {
-          canvas.width = img.height;
-          canvas.height = img.width;
-        } else
-        {
-          canvas.width = img.width;
-          canvas.height = img.height;
-        }
-
-        // Move origin to center and rotate
-        context.translate(canvas.width / 2, canvas.height / 2);
-        context.rotate((angle * Math.PI) / 180); // Negative to correct orientation
-
-        // Draw image at new position
-        context.drawImage(img, -img.width / 2, -img.height / 2);
-
-        // Convert canvas to Base64 image string
-        resolve(canvas.toDataURL());
-      };
-    });
+      clearTimeout(player.rotateTimeout);
+    }
+    // predictPlayer only after user does not trigger rotate again
+    player.rotateTimeout = setTimeout(async () =>
+    {
+      this.rotationAnimationEnd(playerIndex)
+      await this.predictPlayer(playerIndex)
+      player.rotating = false
+    }, 1000);
   }
 
   /**
