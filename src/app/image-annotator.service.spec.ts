@@ -35,7 +35,7 @@ describe('ImageAnnotator', () =>
   it('should create an instance', async () =>
   {
     const service = TestBed.inject(ImageAnnotatorService);
-    const result = await service.annotate(image_161Points)
+    const result = await service.annotate(image_161Points, 0)
     expect(result.predictions.length).toEqual(29)
     // expect(result).toEqual(predictionResult161Points)
   });
@@ -47,7 +47,7 @@ describe('ImageAnnotator', () =>
     const base64Image = await loadImageAsBase64(http, imageUrl);
 
     const service = TestBed.inject(ImageAnnotatorService);
-    const annotations = await service.annotate(base64Image)
+    const annotations = await service.annotate(base64Image, 0)
 
     const forest = new Forest("test", [])
     const forestCards = ForestAssembler.assembleForest(annotations);

@@ -72,9 +72,9 @@ export class ImageAnnotatorService
     return ort.InferenceSession.create(modelBinary);
   }
 
-  public async annotate(image: string): Promise<PredictionResult>
+  public async annotate(image: string, rotation: number): Promise<PredictionResult>
   {
-    const [input, img_width, img_height] = await this.prepare_input(image);
+    const [input, img_width, img_height] = await this.prepare_input(image, rotation);
 
     const inputArray = new ort.Tensor(Float32Array.from(input), [1, 3, 640, 640]);
     const session = await this.session
@@ -157,7 +157,23 @@ export class ImageAnnotatorService
     });
   }
 
-  private async prepare_input(image: string): Promise<[number[], number, number]>
+  private drawRotatedImage(context: CanvasRenderingContext2D, img: CanvasImageSource, x: number, y: number, width: number, height: number, angle: number)
+  {
+    context.save(); // Save current state
+
+    // Move the origin to the center of the image
+    context.translate(x + width / 2, y + height / 2);
+
+    // Convert angle to radians and rotate
+    context.rotate(angle * Math.PI / 180);
+
+    // Draw the image, adjusting for the new center
+    context.drawImage(img, -width / 2, -height / 2, width, height);
+
+    context.restore(); // Restore previous state
+  }
+
+  private async prepare_input(image: string, rotation: number): Promise<[number[], number, number]>
   {
     return new Promise(resolve =>
     {
@@ -174,7 +190,7 @@ export class ImageAnnotatorService
         {
           throw new Error('Could not get context');
         }
-        context.drawImage(img, 0, 0, 640, 640);
+        this.drawRotatedImage(context, img, 0, 0, 640, 640, rotation)
         const imgData = context.getImageData(0, 0, 640, 640);
         const pixels = imgData.data;
 
@@ -210,16 +226,16 @@ export class ImageAnnotatorService
       const w = modelData[2 * 8400 + index];
       const h = modelData[3 * 8400 + index];
 
-      const x = (xc) / 640 * img_width;
-      const y = (yc) / 640 * img_height;
-      const width = (w) / 640 * img_width;
-      const height = (h) / 640 * img_height;
+      // output coordinates in range 0-1
+      const x = (xc) / 640
+      const y = (yc) / 640
+      const width = (w) / 640
+      const height = (h) / 640
 
       predictions.push({
         class: label,
         class_id: class_id,
         confidence: prob,
-        detection_id: "",
         x: x,
         y: y,
         width: width,
@@ -238,7 +254,6 @@ export class ImageAnnotatorService
 
     const result: PredictionResult = {
       time: 0, //endTime - startTime,
-      image: { width: img_width, height: img_height },
       predictions: predictionsFiltered
     }
     return result;

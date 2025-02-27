@@ -20,6 +20,8 @@ export class AnnotationEditorComponent implements OnInit
 {
   player: Player | undefined;
   canvas: fabric.Canvas | undefined;
+  imgWidth: number = 0 // rotation already applied
+  imgHeight: number = 0 // rotation already applied
 
   currentPredictions: Prediction[] = [];
 
@@ -93,9 +95,8 @@ export class AnnotationEditorComponent implements OnInit
     });
   }
 
-  getCardColor(cardLabel: string): string
+  getCardColor(color: CardColor): string
   {
-    const color = cards[cardLabel].color
     switch (color)
     {
       case CardColor.LINDEN:
@@ -105,7 +106,7 @@ export class AnnotationEditorComponent implements OnInit
       case CardColor.SILVER_FIR:
         return `rgba(0,29,255, 1)`
       case CardColor.BIRCH:
-        return `rgba(47,247,11, 1)`
+        return `rgba(91, 209, 55, 1)`
       case CardColor.BEECH:
         return `rgba(0,76,0, 1)`
       case CardColor.SYCAMORE:
@@ -123,9 +124,13 @@ export class AnnotationEditorComponent implements OnInit
     }
   }
 
-  getCardColorAlpha(cardLabel: string, opacity: number = 0.3): string
+  getCardColorAlpha(color: CardColor, opacity: number = 0.3): string
   {
-    const rgba = this.getCardColor(cardLabel)
+    if (color == CardColor.DOUGLAS_FIR)
+    {
+      opacity *= 2
+    }
+    const rgba = this.getCardColor(color)
     return rgba.replace(", 1)", `, ${opacity})`)
   }
 
@@ -147,9 +152,24 @@ export class AnnotationEditorComponent implements OnInit
       }
     );
 
+    const angle = this.player.rotationAngle % 360
+    if (angle == 0 || angle == 180)
+    {
+      this.imgWidth = img.width
+      this.imgHeight = img.height
+    }
+    else
+    {
+      this.imgWidth = img.height
+      this.imgHeight = img.width
+    }
+
     const fabricImg = new fabric.FabricImage(img, {
-      originX: "left",
-      originY: "top",
+      left: this.imgWidth / 2,
+      top: this.imgHeight / 2,
+      originX: "center",
+      originY: "center",
+      angle: angle,
     })
 
     canvas.backgroundImage = fabricImg;
@@ -168,14 +188,22 @@ export class AnnotationEditorComponent implements OnInit
 
     for (const prediction of this.currentPredictions)
     {
+      const color = cards[prediction.class].color
+
+      // convert to pixels
+      const predictionWidth = prediction.width * this.imgWidth
+      const predictionHeight = prediction.height * this.imgHeight
+      const predictionX = prediction.x * this.imgWidth
+      const predictionY = prediction.y * this.imgHeight
+
       let rect = new fabric.Rect({
-        left: (prediction.x - prediction.width / 2),
-        top: (prediction.y - prediction.height / 2),
-        width: prediction.width,
-        height: prediction.height,
-        fill: this.getCardColorAlpha(prediction.class, 0.3),
-        stroke: this.getCardColor(prediction.class),
-        strokeWidth: 2,
+        left: (predictionX - predictionWidth / 2),
+        top: (predictionY - predictionHeight / 2),
+        width: predictionWidth,
+        height: predictionHeight,
+        fill: this.getCardColorAlpha(color, 0.3),
+        stroke: this.getCardColor(color),
+        strokeWidth: 4,
         cornerStyle: 'circle',
       });
       // rect.controls = {
@@ -207,9 +235,8 @@ export class AnnotationEditorComponent implements OnInit
 
     this.canvas.setDimensions({ width: width, height: height });
 
-    const img = this.player.annotations.image
-    const scaleX = width / img.width
-    const scaleY = height / img.height
+    const scaleX = width / this.imgWidth
+    const scaleY = height / this.imgHeight
     const scale = Math.min(scaleX, scaleY)
     this.canvas.setZoom(scale)
     this.canvas.absolutePan(new fabric.Point(0, 0))
