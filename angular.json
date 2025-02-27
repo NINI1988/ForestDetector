@@ -114,6 +114,11 @@
                 "glob": "**/ort-wasm-simd-threaded.wasm",
                 "input": "node_modules/onnxruntime-web/dist/",
                 "output": "assets/onnxruntime-web/"
+              },
+              {
+                "glob": "**/*",
+                "input": "test_data/",
+                "output": "test_data/"
               }
             ],
             "styles": [
