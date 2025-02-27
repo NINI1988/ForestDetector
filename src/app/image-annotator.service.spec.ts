@@ -47,7 +47,7 @@ describe('ImageAnnotator', () =>
     const base64Image = await loadImageAsBase64(http, imageUrl);
 
     const service = TestBed.inject(ImageAnnotatorService);
-    const annotations = await service.annotate(base64Image)
+    const annotations = await service.annotate(base64Image, 0)
 
     const forest = new Forest("test", [])
     const forestCards = ForestAssembler.assembleForest(annotations);
