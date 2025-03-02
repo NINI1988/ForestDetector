@@ -23,6 +23,9 @@ export class AnnotationEditorComponent implements OnInit
   imgWidth: number = 0 // rotation already applied
   imgHeight: number = 0 // rotation already applied
 
+  zoomMin: number = 0
+  zoomMax: number = 0
+
   currentPredictions: Prediction[] = [];
 
   currentWidth: number = 0
@@ -238,6 +241,8 @@ export class AnnotationEditorComponent implements OnInit
     const scaleX = width / this.imgWidth
     const scaleY = height / this.imgHeight
     const scale = Math.min(scaleX, scaleY)
+    this.zoomMin = scale * 0.5
+    this.zoomMax = scale * 30
     this.canvas.setZoom(scale)
     this.canvas.absolutePan(new fabric.Point(0, 0))
   }
@@ -499,8 +504,8 @@ export class AnnotationEditorComponent implements OnInit
     var delta = event.e.deltaY;
     var zoom = this.canvas.getZoom();
     zoom *= 0.999 ** delta;
-    if (zoom > 20) zoom = 20;
-    if (zoom < 0.1) zoom = 0.1;
+    if (zoom > this.zoomMax) zoom = this.zoomMax;
+    if (zoom < this.zoomMin) zoom = this.zoomMin;
     this.canvas.zoomToPoint(new fabric.Point(event.e.offsetX, event.e.offsetY), zoom);
     event.e.preventDefault();
     event.e.stopPropagation();
@@ -513,8 +518,8 @@ export class AnnotationEditorComponent implements OnInit
   {
     if (!this.canvas) return
 
-    if (zoom > 20) zoom = 20;
-    if (zoom < 0.1) zoom = 0.1;
+    if (zoom > this.zoomMax) zoom = this.zoomMax;
+    if (zoom < this.zoomMin) zoom = this.zoomMin;
 
     this.canvas.zoomToPoint(aroundPoint, zoom)
     this.canvas.renderAll()

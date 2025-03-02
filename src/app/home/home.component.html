@@ -25,57 +25,59 @@
 
         <!-- BoardGame photo -->
         <td>
-          <button
-            class="btn btn-primary"
-            (click)="handleImageOpen(fileInputCamera)"
-            title="Take picture"
-            [disabled]="player.annotating"
-          >
-          <i class="bi bi-camera"></i>
-            <!-- Take/Upload Image -->
-          </button>
+          <div class="text-nowrap"> <!-- button row -->
+            <button
+              class="btn btn-primary"
+              (click)="handleImageOpen(fileInputCamera)"
+              title="Take picture"
+              [disabled]="player.annotating"
+            >
+            <i class="bi bi-camera"></i>
+              <!-- Take/Upload Image -->
+            </button>
 
-          <!-- Hidden file input -->
-          <input
-            type="file"
-            #fileInputCamera
-            accept="image/*"
-            capture="environment"
-            style="display: none;"
-            (change)="onFileSelected(i, $event)"
-          />
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              #fileInputCamera
+              accept="image/*"
+              capture="environment"
+              style="display: none;"
+              (change)="onFileSelected(i, $event)"
+            />
 
-          <button
-            class="btn btn-primary"
-            (click)="handleImageOpen(fileInputImage)"
-            title="Upload picture"
-            [disabled]="player.annotating"
-          >
-            <i class="bi bi-image"></i>
-            <!-- Take/Upload Image -->
-          </button>
+            <button
+              class="btn btn-primary"
+              (click)="handleImageOpen(fileInputImage)"
+              title="Upload picture"
+              [disabled]="player.annotating"
+            >
+              <i class="bi bi-image"></i>
+              <!-- Take/Upload Image -->
+            </button>
 
-          <!-- Hidden file input -->
-          <input
-            type="file"
-            #fileInputImage
-            accept="image/*"
-            style="display: none;"
-            (change)="onFileSelected(i, $event)"
-          />
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              #fileInputImage
+              accept="image/*"
+              style="display: none;"
+              (change)="onFileSelected(i, $event)"
+            />
 
-          <button *ngIf="player.boardGame"
-            class="btn btn-primary"
-            (click)="onRotateImage(i)"
-            title="Rotate image"
-            [disabled]="player.annotating"
-          >
-            <i class="bi bi-arrow-clockwise"></i>
-          </button>
+            <button *ngIf="player.boardGame"
+              class="btn btn-primary"
+              (click)="onRotateImage(i)"
+              title="Rotate image"
+              [disabled]="player.annotating"
+            >
+              <i class="bi bi-arrow-clockwise"></i>
+            </button>
+          </div>
 
           <!-- Preview if image is selected -->
           <div *ngIf="player.boardGame" class="boardGameContainer d-flex justify-content-center align-items-center"
-          [style.maxHeight.px]="player.boardGameContainerHeight + 2"
+          [style.height.px]="player.boardGameContainerHeight + 2"
           >
             <a
               #boardgame
