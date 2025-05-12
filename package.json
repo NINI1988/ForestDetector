@@ -37,7 +37,7 @@
     "@angular/cli": "^19.2.0",
     "@angular/compiler-cli": "^19.2.0",
     "@angular/localize": "^19.2.0",
-    "@types/jasmine": "~5.1.0",
+    "@types/jasmine": "~5.1.8",
     "angular-cli-ghpages": "^2.0.3",
     "gh-pages": "^6.3.0",
     "jasmine-core": "~5.5.0",
