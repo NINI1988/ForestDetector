@@ -24,7 +24,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "fabric": "^6.5.4",
+    "fabric": "^6.6.6",
     "gh-pages": "^6.3.0",
     "onnx-proto": "^8.0.1",
     "onnxruntime-web": "^1.20.1",
