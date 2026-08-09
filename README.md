@@ -17,6 +17,10 @@ See https://nini1988.github.io/ForestDetector/
 - This project uses https://github.com/ultralytics/ultralytics for the training of the yolo model for card detection.
   -  The project is licensed under AGPL-3.0 license. The original license can be found in https://github.com/ultralytics/ultralytics/blob/main/LICENSE.
 
+# Yolo Model dataset and training
+
+- Is a work in progress: https://github.com/NINI1988/ForestModel
+
 # Angular description
 <details>
   <summary>Details</summary>
