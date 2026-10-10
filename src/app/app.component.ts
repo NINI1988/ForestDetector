@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HeaderService } from './header.service';
 
 @Component({
@@ -12,9 +12,7 @@ import { HeaderService } from './header.service';
 })
 export class AppComponent
 {
-
-  constructor(public headerService: HeaderService)
+  constructor(public headerService: HeaderService, public router: Router)
   {
   }
-
 }
