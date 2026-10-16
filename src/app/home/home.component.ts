@@ -181,7 +181,16 @@ export class HomeComponent implements OnInit
           const forest = new Forest(playerName, this.allForests)
           this.allForests.push(forest)
 
-          const forestCards = ForestAssembler.assembleForest(player.annotations);
+          let forestCards;
+          try
+          {
+            forestCards = ForestAssembler.assembleForest(player.annotations);
+          }
+          catch (error)
+          {
+            const details = error instanceof Error ? error.message : String(error);
+            throw new Error(`Player "${playerName}": ${details}`);
+          }
 
           forest.setCards(forestCards)
           forest.caveCount = player.cardsInCave
