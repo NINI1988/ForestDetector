@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockImageAnnotatorService } from '../../mocks/mock-image-annotator.service';
 import { HomeComponent } from './home.component';
 import { ImageAnnotatorService } from '../image-annotator.service';
+import { ForestAssembler } from '../../model/forest-assembler';
 
 describe('HomeComponent', () =>
 {
@@ -27,4 +28,19 @@ describe('HomeComponent', () =>
   {
     expect(component).toBeTruthy();
   });
+
+  it('should include the player name when forest assembly fails', async () =>
+  {
+    const player = component.playerService.players[0];
+    player.name = 'Alice';
+    player.annotations = {} as any;
+
+    spyOn(ForestAssembler, 'assembleForest').and.throwError('No nearest card found');
+    const alertSpy = spyOn(window, 'alert');
+
+    await component.submit();
+
+    expect(alertSpy).toHaveBeenCalledWith(jasmine.stringMatching(/Alice.*No nearest card found/));
+  });
+
 });
